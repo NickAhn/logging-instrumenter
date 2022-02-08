@@ -50,6 +50,19 @@
 					{
 						"literal":{
 							"symbol_type": "user_defined",
+							"literal_type": "negative_trigger",
+							"literal_name": "funccall",
+							"args": [
+								{"arg":{"arg_type":"var", "arg_name": "T2"}},
+								{"arg":{"arg_type":"val", "arg_name": "authorization-service"}},
+								{"arg":{"arg_type":"val", "arg_name": "com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass"}},
+								{"arg":{"arg_type":"var", "arg_name": "[U]"}}
+							]
+						}
+					},
+					{
+						"literal":{
+							"symbol_type": "user_defined",
 							"literal_type": "trigger_invocation",
 							"literal_name": "funccall",
 							"args": [
@@ -79,19 +92,6 @@
 							"args": [
 								{"arg":{"arg_type":"var", "arg_name": "U"}},
 								{"arg":{"arg_type":"val", "arg_name": "user"}}
-							]
-						}
-					},
-					{
-						"literal":{
-							"symbol_type": "user_defined",
-							"literal_type": "negative_trigger",
-							"literal_name": "funccall",
-							"args": [
-								{"arg":{"arg_type":"var", "arg_name": "T2"}},
-								{"arg":{"arg_type":"val", "arg_name": "authorization-service"}},
-								{"arg":{"arg_type":"val", "arg_name": "com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass"}},
-								{"arg":{"arg_type":"var", "arg_name": "[U]"}}
 							]
 						}
 					},

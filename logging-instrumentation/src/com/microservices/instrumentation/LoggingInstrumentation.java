@@ -626,11 +626,15 @@ public class LoggingInstrumentation {
 			if (bodyLiteralName[i].length != 0){ // if body is not empty
 				assert_clauses += " :- ";
 				for (int k = 0; k < bodyLiteralName[i].length; k++){
+					if (bodyLiteralType[i][k].equals("negative_trigger")) {
+						System.out.println("break");
+						continue;
+					}
+					
 					assert_clauses += bodyLiteralName[i][k] + "(";
 					for (int j = 0; j < bodyLiteralArgName[i][k].length; j++){
 						//TODO: check if the type is negative trigger (if so, skip)
-						if (bodyLiteralName[i][k].equals("funccall") && j == 2 && !bodyLiteralType[i][k].equals("negative_trigger")) {
-							System.out.println("not a negative trigger");
+						if (bodyLiteralName[i][k].equals("funccall") && j == 2) {
 							assert_clauses += "\\\"" + bodyLiteralArgName[i][k][j] + "\\\"";
 						}
 						else {
@@ -642,7 +646,9 @@ public class LoggingInstrumentation {
 					}
 					assert_clauses += ")";
 					if (k != bodyLiteralName[i].length - 1){ // if not the last body literal, put a comma (conj)
+						System.out.println(assert_clauses);
 						assert_clauses += ", ";
+						System.out.println(assert_clauses);
 					}
 					// set the goal and goal vars
 					if (headLiteralName[i].equals("loggedfunccall")) {
