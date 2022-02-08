@@ -310,8 +310,6 @@ public class LoggingInstrumentation {
 							loggingEventToTriggersMap.put(headLiteralArgName[k][2], pcList);
 						}
 						
-					}else if(headLiteralName[k].equals("lg")) {
-						System.out.println("Foung lg!");
 					}
 				}
 			}
@@ -621,11 +619,7 @@ public class LoggingInstrumentation {
 				}
 				assert_clauses += ")";
 				
-			} else if(headType[i].equals("pred2")) {
-				System.out.println("Found lg in assertClauses()!");
-				
-			} 
-			
+			} 			
 			else { // head type is empty!
 				assert_clauses += "false";
 			} 
@@ -634,7 +628,9 @@ public class LoggingInstrumentation {
 				for (int k = 0; k < bodyLiteralName[i].length; k++){
 					assert_clauses += bodyLiteralName[i][k] + "(";
 					for (int j = 0; j < bodyLiteralArgName[i][k].length; j++){
-						if (bodyLiteralName[i][k].equals("funccall") && j == 2) {
+						//TODO: check if the type is negative trigger (if so, skip)
+						if (bodyLiteralName[i][k].equals("funccall") && j == 2 && !bodyLiteralType[i][k].equals("negative_trigger")) {
+							System.out.println("not a negative trigger");
 							assert_clauses += "\\\"" + bodyLiteralArgName[i][k][j] + "\\\"";
 						}
 						else {
