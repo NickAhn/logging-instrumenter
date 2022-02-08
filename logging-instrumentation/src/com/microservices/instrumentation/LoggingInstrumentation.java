@@ -119,13 +119,7 @@ public class LoggingInstrumentation {
 					"		ec.turnOff();\n" + 
 					"	}";
 	
-	//this comes after addAssertionsFromDB()
-//	private static final String getalllg = "ec.query(LG, T_LG);\n"
-//			+ "		writeFile(ec.getQueryResult(), testDBPath);	\n"
-//			+ "		String result = ec.getQueryResult();\n"
-//			+ "		result = result.replaceAll(\"[^-?0-9]+\", \" \").trim(); // remove all non-digits and empty lines\n"
-//			+ "		String[] split_2 = result.split(\" \");";
-
+	
 	// template for sending GET request to each trigger by logging event
 	private static final String getRequestToTriggerTemplate = 
 			"content = restClinet.getPostsPlainJSON(\"http://localhost:<PORT>/localdb\");\n" + 
@@ -161,6 +155,7 @@ public class LoggingInstrumentation {
 	private JSONObject[][][] bodyLiteralArgObj;
 	private String[][][] bodyLiteralArgType;
 	private String[][][] bodyLiteralArgName;
+	
 
 	// lists of all pointcuts, trigger pointcuts, and logging event pointcuts
 	private List<String> pointCuts = new ArrayList<String>();
@@ -281,6 +276,12 @@ public class LoggingInstrumentation {
 			if (hornClauseType[i].equals("log_spec")){ // for all logging specs
 				for (int k = 0; k < bodyLiteralName[i].length; k++){
 					if (bodyLiteralName[i][k].equals("funccall")){ // if the body literal is an event or trigger
+						//TODO: check if bodyLiteralType is negative_trigger AND add to json file
+						if (bodyLiteralType[i][k].equals("negative_trigger")) {
+							System.out.println("Found negative trigger!");
+						}
+						
+						
 						// extract the pointcut from the method path
 						String pointCut = bodyLiteralArgName[i][k][2];
 						// add the pointcut to the list of advice points
@@ -308,6 +309,9 @@ public class LoggingInstrumentation {
 							}
 							loggingEventToTriggersMap.put(headLiteralArgName[k][2], pcList);
 						}
+						
+					}else if(headLiteralName[k].equals("lg")) {
+						System.out.println("Foung lg!");
 					}
 				}
 			}
@@ -597,6 +601,7 @@ public class LoggingInstrumentation {
 
 	}
 	
+	//TODO: assertClauses for lg
 	private String assertClauses() {
 		String assert_clauses = "";
 		for(int i = 0; i < headLiteralName.length; i++){
@@ -616,7 +621,12 @@ public class LoggingInstrumentation {
 				}
 				assert_clauses += ")";
 				
-			} else { // head type is empty!
+			} else if(headType[i].equals("pred2")) {
+				System.out.println("Found lg in assertClauses()!");
+				
+			} 
+			
+			else { // head type is empty!
 				assert_clauses += "false";
 			} 
 			if (bodyLiteralName[i].length != 0){ // if body is not empty
