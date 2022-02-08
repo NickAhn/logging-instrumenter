@@ -1,0 +1,3 @@
+/home/nickel/Documents/logging-microservices-master/sample-source-microservices/spring-boot-microservice-authentication-service
+/home/nickel/Documents/logging-microservices-master/sample-source-microservices/spring-boot-microservice-authorization-service
+/home/nickel/Documents/logging-microservices-master/sample-source-microservices/spring-boot-microservice-patient-service

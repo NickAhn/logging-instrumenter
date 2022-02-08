@@ -1,0 +1,116 @@
+package <PACKAGE>;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+
+
+@Aspect
+@Configuration
+public class LoggingAspect {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	static String localDBPath = 
+			<LOCAL_DB_PATH>;
+	static String remoteDBPath =
+			<REMOTE_DB_PATH>;
+	static String logDBPath = 
+			<LOG_DB_PATH>;
+
+	
+	@Autowired
+	private Environment env;
+	
+	private RestClient restClinet = 
+			new RestClient(new RestTemplateBuilder());
+	
+	private EngineCommunication ec;
+	
+	static String G = "loggedfunccall(X0,X1,X2,X3)"; // goal
+	static String T = "(X0, X1, X2, X3)";	//response format
+	
+	//trigger aspects, if any
+
+	//logging event aspects
+	<ASPECTS>
+
+	private void addLoggingSpec( ) {
+		<DEFINE_PREDS>
+		<ASSERT_CLAUSES>
+	}
+	
+	private void addAssertionsFromDB(String filePath) {
+		
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader(filePath));
+			String line = reader.readLine();
+			while (line != null && line.length()>0) {
+				logger.info("assert({})", line);
+				ec.addFact("assert(" + line + ")");
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private String buildPreCond(JoinPoint joinPoint)  {
+		String timestamp = ((Long) System.currentTimeMillis()).toString();
+		String serviceName = 
+				env.getRequiredProperty("spring.application.name");
+		String methodName = "\"" + getMethodName( 
+				joinPoint.getSignature().toString()) + "\"";
+		String methodArg = arrayToString(joinPoint.getArgs());
+		
+		return "funccall(" + timestamp + 
+				", " + serviceName +
+				", "  + methodName + 
+				", " + methodArg + ")";
+	}
+	
+	private String arrayToString(Object[] array) {
+		if (array.length == 0) return "[]";
+		String str = "[" + array[0];
+		for (int i = 1; i < array.length; i++) {
+			str += ", " + array[i].toString().toLowerCase();
+		}
+		str += "]";
+		return str;
+	}
+	
+	private String getMethodName(String signature) {
+		return (signature.split("\\s+")[1]).split("\\(")[0];
+	}
+	
+	private void appendFile(String st, String filePath) 
+			throws IOException {
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)));
+		out.println(st);
+		out.close();
+	}
+	
+	private void writeFile(String st, String filePath) 
+			throws IOException {
+		PrintWriter out = new PrintWriter(filePath, "UTF-8");
+		out.print(st);
+		out.close();
+	}
+
+
+}
