@@ -227,7 +227,7 @@ public class LoggingInstrumentation {
 		for (int i = 0; i < logprogObj.length(); i++) {
 			fullHornClauseObj[i] = logprogObj.getJSONObject(i);
 			hornClauseType[i] = fullHornClauseObj[i].getString("hc_type");
-			mainHornClauseObj[i] = fullHornClauseObj[i].getJSONObject("horn_clause");
+			mainHornClauseObj[i] = fullHornClauseObj[i].getJSONObject("logic_clause");
 			fullHeadObj[i] = mainHornClauseObj[i].getJSONObject("head");
 			headType[i] = fullHeadObj[i].getString("head_type");
 			headLiteralObj[i] = fullHeadObj[i].getJSONObject("literal");
