@@ -78,7 +78,6 @@ public class LoggingAspect {
 		ec.addFact("dynamic loggedfunccall/4 as incremental"); 
 		ec.addFact("dynamic funccall/4 as incremental"); 
 		ec.addFact("dynamic funccall/4 as incremental"); 
-		ec.addFact("dynamic funccall/4 as incremental"); 
 		
 		ec.addFact("assert((loggedfunccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), ==(U, user)))");
 		

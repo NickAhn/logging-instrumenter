@@ -216,6 +216,7 @@ public class LoggingInstrumentation {
 		headLiteralArgObj = new JSONObject [logprogObj.length()] [];
 		headLiteralArgType = new String [logprogObj.length()] [];
 		headLiteralArgName = new String [logprogObj.length()] [];
+		
 		bodyLiteralObj = new JSONObject [logprogObj.length()] [];
 		bodyLiteralSymbolType = new String [logprogObj.length()] [];
 		bodyLiteralType = new String [logprogObj.length()] [];
@@ -223,12 +224,15 @@ public class LoggingInstrumentation {
 		bodyLiteralArgObj = new JSONObject [logprogObj.length()] [] [];
 		bodyLiteralArgType = new String [logprogObj.length()] [] [];
 		bodyLiteralArgName = new String [logprogObj.length()] [] [];
+		
+		
 
 		for (int i = 0; i < logprogObj.length(); i++) {
 			fullHornClauseObj[i] = logprogObj.getJSONObject(i);
 			hornClauseType[i] = fullHornClauseObj[i].getString("hc_type");
 			mainHornClauseObj[i] = fullHornClauseObj[i].getJSONObject("logic_clause");
 			fullHeadObj[i] = mainHornClauseObj[i].getJSONObject("head");
+			System.out.println("head type: " + fullHeadObj[i].getString("head_type"));
 			headType[i] = fullHeadObj[i].getString("head_type");
 			headLiteralObj[i] = fullHeadObj[i].getJSONObject("literal");
 			headLiteralSymbolType[i] = headLiteralObj[i].getString("symbol_type");
@@ -244,6 +248,7 @@ public class LoggingInstrumentation {
 				headLiteralArgName[i][j] = headLiteralArgObj[i][j].getJSONObject("arg").getString("arg_name");
 			}
 			bodyObj = mainHornClauseObj[i].getJSONArray("body");
+			System.out.println(mainHornClauseObj[i].getJSONArray("body"));
 			bodyLiteralObj[i] = new JSONObject [bodyObj.length()];
 			bodyLiteralSymbolType[i] = new String [bodyObj.length()];
 			bodyLiteralType[i] = new String [bodyObj.length()];
@@ -251,7 +256,16 @@ public class LoggingInstrumentation {
 			bodyLiteralArgObj[i] = new JSONObject [bodyObj.length()] [];
 			bodyLiteralArgType[i] = new String [bodyObj.length()] [];
 			bodyLiteralArgName[i] = new String [bodyObj.length()] [];
-			for (int k = 0; k < bodyObj.length(); k++){
+			for (int k = 0; k < bodyObj.length(); k++){			
+				if(!bodyObj.getJSONObject(k).isNull("neg_trigger_rule")) { //TODO: parse neg_trigger_body
+					System.out.println("\nfound:\"neg_trigger_rule\"");
+					System.out.println("  - neg trig rule: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule"));
+					System.out.println("    - head: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONObject("neg_trigger_head"));
+					System.out.println("    - body: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body"));
+					System.out.println("     - body literal 1: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(0).getJSONObject("literal"));
+					System.out.println("     - body literal 2: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(1).getJSONObject("literal"));
+					break;
+				}
 				bodyLiteralObj[i][k] = bodyObj.getJSONObject(k).getJSONObject("literal");
 				bodyLiteralSymbolType[i][k] = bodyLiteralObj[i][k].getString("symbol_type");
 				bodyLiteralType[i][k] = bodyLiteralObj[i][k].getString("literal_type");
@@ -626,8 +640,8 @@ public class LoggingInstrumentation {
 			if (bodyLiteralName[i].length != 0){ // if body is not empty
 				assert_clauses += " :- ";
 				for (int k = 0; k < bodyLiteralName[i].length; k++){
-					if (bodyLiteralType[i][k].equals("negative_trigger")) {
-						System.out.println("break");
+					if (bodyLiteralType[i][k].equals("negative_trigger_invocation")) {
+						System.out.println("literal_type: " + bodyLiteralType[i][k]);
 						continue;
 					}
 					

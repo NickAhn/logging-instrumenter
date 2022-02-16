@@ -3,7 +3,7 @@
 	[
 		{
 			"hc_type": "log_spec",
-			"horn_clause": {
+			"logic_clause": {
 				"head":{
 					"head_type": "pred",
 					"literal": {
@@ -66,7 +66,49 @@
 								{"arg":{"arg_type":"val", "arg_name": "user"}}
 							]
 						}
-					}
+					},
+					{
+                        "neg_trigger_rule":{
+                            "neg_trigger_head":{
+                                "head_type":"neg_pred",
+                                "literal":{
+                                    "symbol_type": "user_defined",
+                                    "literal_type": "neg_trigger_invocation",
+                                    "literal_name": "funccall",
+                                    "args": [
+                                        {"arg":{"arg_type":"var", "arg_name": "T2"}},
+                                        {"arg":{"arg_type":"val", "arg_name": "authorization-service"}},
+                                        {"arg":{"arg_type":"val", "arg_name": "com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass"}},
+                                        {"arg":{"arg_type":"var", "arg_name": "[U]"}}
+                                    ]
+                                }
+                            },
+                            "neg_trigger_body":[
+                                {
+                                    "literal":{
+                                        "symbol_type": "built_in",
+                                        "literal_type": "timestamp_ordering",
+                                        "literal_name": "<",
+                                        "args": [
+                                            {"arg":{"arg_type":"var", "arg_name": "T2"}},
+                                            {"arg":{"arg_type":"var", "arg_name": "T0"}}
+                                        ]
+                                    }
+                                },
+                                {
+                                    "literal":{
+                                        "symbol_type": "built_in",
+                                        "literal_type": "timestamp_ordering",
+                                        "literal_name": "<",
+                                        "args": [
+                                            {"arg":{"arg_type":"var", "arg_name": "T1"}},
+                                            {"arg":{"arg_type":"var", "arg_name": "T2"}}
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
 				]
 			}
 		}
