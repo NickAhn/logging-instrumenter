@@ -156,6 +156,25 @@ public class LoggingInstrumentation {
 	private String[][][] bodyLiteralArgType;
 	private String[][][] bodyLiteralArgName;
 	
+	private JSONObject[] fullNegTriggerRule;
+	private JSONObject[] negTriggerHead;
+	private String[] negTriggerHead_Type;
+	private JSONObject[] negTriggerhead_LiteralObj;
+	private String[] negTriggerHead_LiteralSymbolType;
+	private String[] negTriggerhead_LiteralType;
+	private String[] negTriggerhead_LiteralName;
+	private JSONObject[][] negTriggerHead_LiteralArgObj;
+	private String[][] negTriggerHeadhead_LiteralArgType;
+	private String[][] negTriggerHead_LiteralArgName;
+	
+	private JSONObject[][] negTriggerBody_LiteralObj;
+	private String[][] negTriggerBody_LiteralSymbolType;
+	private String[][] negTriggerBody_LiteralType;
+	private String[][] negTriggerBody_LiteralName;
+	private JSONObject[][][] negTriggerBody_LiteralArgObj;
+	private String[][][] negTriggerBody_LiteralArgType;
+	private String[][][] negTriggerBody_bodyLiteralArgName;
+	
 
 	// lists of all pointcuts, trigger pointcuts, and logging event pointcuts
 	private List<String> pointCuts = new ArrayList<String>();
@@ -208,6 +227,7 @@ public class LoggingInstrumentation {
 		hornClauseType = new String [logprogObj.length()];
 		mainHornClauseObj = new JSONObject [logprogObj.length()];
 		fullHeadObj = new JSONObject [logprogObj.length()];
+		
 		headType = new String [logprogObj.length()];
 		headLiteralObj = new JSONObject [logprogObj.length()];
 		headLiteralSymbolType = new String [logprogObj.length()];
@@ -225,7 +245,25 @@ public class LoggingInstrumentation {
 		bodyLiteralArgType = new String [logprogObj.length()] [] [];
 		bodyLiteralArgName = new String [logprogObj.length()] [] [];
 		
+		//bodyType = new String [logprogObj.length]; // hold "neg_pred": bodyLiteralObj.getString("head_type:)
+		fullNegTriggerRule = new JSONObject [logprogObj.length()]; //JSONObject
+		negTriggerHead = new JSONObject [logprogObj.length()]; //JSONObject []
+		negTriggerHead_Type = new String [logprogObj.length()]; //String []
+		negTriggerhead_LiteralObj = new JSONObject [logprogObj.length()];
+		negTriggerHead_LiteralSymbolType = new String [logprogObj.length()];
+		negTriggerhead_LiteralType = new String [logprogObj.length()];
+		negTriggerhead_LiteralName = new String [logprogObj.length()];
+		negTriggerHead_LiteralArgObj = new JSONObject [logprogObj.length()] [];
+		negTriggerHeadhead_LiteralArgType = new String [logprogObj.length()] [];
+		negTriggerHead_LiteralArgName = new String [logprogObj.length()] [];
 		
+		negTriggerBody_LiteralObj = new JSONObject [logprogObj.length()] []; //get from bodyObj
+		negTriggerBody_LiteralSymbolType = new String [logprogObj.length()] [];
+		negTriggerBody_LiteralType = new String [logprogObj.length()] [];
+		negTriggerBody_LiteralName = new String [logprogObj.length()] [];
+		negTriggerBody_LiteralArgObj = new JSONObject [logprogObj.length()] [] [];
+		negTriggerBody_LiteralArgType = new String [logprogObj.length()] [] [];
+		negTriggerBody_bodyLiteralArgName = new String [logprogObj.length()] [] [];
 
 		for (int i = 0; i < logprogObj.length(); i++) {
 			fullHornClauseObj[i] = logprogObj.getJSONObject(i);
@@ -284,6 +322,7 @@ public class LoggingInstrumentation {
 			}			
 		}
 	}
+	
 
 	private void extractPointCuts(){
 		for(int i = 0; i < fullHornClauseObj.length; i++){
