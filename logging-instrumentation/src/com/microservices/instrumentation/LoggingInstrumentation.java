@@ -136,6 +136,7 @@ public class LoggingInstrumentation {
 	private JSONObject[] fullHornClauseObj;
 	private String[] hornClauseType;
 	private JSONObject[] mainHornClauseObj;
+	
 	private JSONObject[] fullHeadObj;
 	private String[] headType;
 	private JSONObject[] headLiteralObj;
@@ -146,6 +147,7 @@ public class LoggingInstrumentation {
 	private JSONObject[][] headLiteralArgObj;
 	private String[][] headLiteralArgType;
 	private String[][] headLiteralArgName;
+	
 	private JSONArray bodyObj;
 	private JSONObject[][] bodyLiteralObj;
 	private String[][] bodyLiteralSymbolType;
@@ -156,24 +158,28 @@ public class LoggingInstrumentation {
 	private String[][][] bodyLiteralArgType;
 	private String[][][] bodyLiteralArgName;
 	
-	private JSONObject[] fullNegTriggerRule;
-	private JSONObject[] negTriggerHead;
-	private String[] negTriggerHead_Type;
-	private JSONObject[] negTriggerhead_LiteralObj;
-	private String[] negTriggerHead_LiteralSymbolType;
-	private String[] negTriggerhead_LiteralType;
-	private String[] negTriggerhead_LiteralName;
+	//---
+	private JSONObject[] negTriggerRule; //equivalent to mainHornClauseObj
+	private JSONObject[] fullNegTriggerObj;
+	private JSONObject[] negTriggerFullHeadObj;
+	private String[] negTrigger_headType;
+	private JSONObject[] negTrigger_headLiteralObj;
+	private String[] negTrigger_headLiteralSymbolType;
+	private String[] negTriggerHead_LiteralType; //refactor from here
+	private String[] negTriggerHead_LiteralName;
+	private JSONArray negTriggerHead_LiteralArgsObj;
 	private JSONObject[][] negTriggerHead_LiteralArgObj;
-	private String[][] negTriggerHeadhead_LiteralArgType;
+	private String[][] negTriggerHead_LiteralArgType;
 	private String[][] negTriggerHead_LiteralArgName;
 	
-	private JSONObject[][] negTriggerBody_LiteralObj;
-	private String[][] negTriggerBody_LiteralSymbolType;
-	private String[][] negTriggerBody_LiteralType;
-	private String[][] negTriggerBody_LiteralName;
-	private JSONObject[][][] negTriggerBody_LiteralArgObj;
-	private String[][][] negTriggerBody_LiteralArgType;
-	private String[][][] negTriggerBody_bodyLiteralArgName;
+	private JSONArray negTrigger_bodyObj;
+	private JSONObject[][] negTrigger_bodyLiteralObj;
+	private String[][] negTrigger_bodyLiteralSymbolType;
+	private String[][] negTrigger_bodyLiteralType;
+	private String[][] negTrigger_bodyLiteralName;
+	private JSONObject[][][] negTrigger_bodyLiteralArgObj;
+	private String[][][] negTrigger_bodyLiteralArgType;
+	private String[][][] negTrigger_bodyLiteralArgName;
 	
 
 	// lists of all pointcuts, trigger pointcuts, and logging event pointcuts
@@ -245,25 +251,8 @@ public class LoggingInstrumentation {
 		bodyLiteralArgType = new String [logprogObj.length()] [] [];
 		bodyLiteralArgName = new String [logprogObj.length()] [] [];
 		
-		//bodyType = new String [logprogObj.length]; // hold "neg_pred": bodyLiteralObj.getString("head_type:)
-		fullNegTriggerRule = new JSONObject [logprogObj.length()]; //JSONObject
-		negTriggerHead = new JSONObject [logprogObj.length()]; //JSONObject []
-		negTriggerHead_Type = new String [logprogObj.length()]; //String []
-		negTriggerhead_LiteralObj = new JSONObject [logprogObj.length()];
-		negTriggerHead_LiteralSymbolType = new String [logprogObj.length()];
-		negTriggerhead_LiteralType = new String [logprogObj.length()];
-		negTriggerhead_LiteralName = new String [logprogObj.length()];
-		negTriggerHead_LiteralArgObj = new JSONObject [logprogObj.length()] [];
-		negTriggerHeadhead_LiteralArgType = new String [logprogObj.length()] [];
-		negTriggerHead_LiteralArgName = new String [logprogObj.length()] [];
 		
-		negTriggerBody_LiteralObj = new JSONObject [logprogObj.length()] []; //get from bodyObj
-		negTriggerBody_LiteralSymbolType = new String [logprogObj.length()] [];
-		negTriggerBody_LiteralType = new String [logprogObj.length()] [];
-		negTriggerBody_LiteralName = new String [logprogObj.length()] [];
-		negTriggerBody_LiteralArgObj = new JSONObject [logprogObj.length()] [] [];
-		negTriggerBody_LiteralArgType = new String [logprogObj.length()] [] [];
-		negTriggerBody_bodyLiteralArgName = new String [logprogObj.length()] [] [];
+		//bodyType = new String [logprogObj.length]; // hold "neg_pred": bodyLiteralObj.getString("head_type:)
 
 		for (int i = 0; i < logprogObj.length(); i++) {
 			fullHornClauseObj[i] = logprogObj.getJSONObject(i);
@@ -290,34 +279,146 @@ public class LoggingInstrumentation {
 			bodyLiteralObj[i] = new JSONObject [bodyObj.length()];
 			bodyLiteralSymbolType[i] = new String [bodyObj.length()];
 			bodyLiteralType[i] = new String [bodyObj.length()];
-			bodyLiteralName[i] = new String [bodyObj.length()];
+			bodyLiteralName[i] = new String [bodyObj.length()-1]; //Added -1 because "neg_trigger_rule" doesn't have a "literal_name"
 			bodyLiteralArgObj[i] = new JSONObject [bodyObj.length()] [];
 			bodyLiteralArgType[i] = new String [bodyObj.length()] [];
 			bodyLiteralArgName[i] = new String [bodyObj.length()] [];
-			for (int k = 0; k < bodyObj.length(); k++){			
+			for (int k = 0; k < bodyObj.length(); k++){	
+				
 				if(!bodyObj.getJSONObject(k).isNull("neg_trigger_rule")) { //TODO: parse neg_trigger_body
+					System.out.println(k);
 					System.out.println("\nfound:\"neg_trigger_rule\"");
 					System.out.println("  - neg trig rule: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule"));
 					System.out.println("    - head: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONObject("neg_trigger_head"));
 					System.out.println("    - body: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body"));
 					System.out.println("     - body literal 1: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(0).getJSONObject("literal"));
 					System.out.println("     - body literal 2: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(1).getJSONObject("literal"));
-					break;
+					
+				}else {
+					bodyLiteralObj[i][k] = bodyObj.getJSONObject(k).getJSONObject("literal");
+					bodyLiteralSymbolType[i][k] = bodyLiteralObj[i][k].getString("symbol_type");
+					bodyLiteralType[i][k] = bodyLiteralObj[i][k].getString("literal_type");
+					bodyLiteralName[i][k] = bodyLiteralObj[i][k].getString("literal_name");
+					bodyLiteralArgsObj = bodyLiteralObj[i][k].getJSONArray("args");
+					bodyLiteralArgObj[i][k] = new JSONObject [bodyLiteralArgsObj.length()];
+					bodyLiteralArgType[i][k] = new String [bodyLiteralArgsObj.length()];
+					bodyLiteralArgName[i][k] = new String [bodyLiteralArgsObj.length()];
+					for (int j = 0; j < bodyLiteralArgsObj.length(); j++){
+						bodyLiteralArgObj[i][k][j] = bodyLiteralArgsObj.getJSONObject(j);
+						bodyLiteralArgType[i][k][j] = 
+								bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_type");
+						bodyLiteralArgName[i][k][j] = 
+								bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_name");
+					}
 				}
-				bodyLiteralObj[i][k] = bodyObj.getJSONObject(k).getJSONObject("literal");
-				bodyLiteralSymbolType[i][k] = bodyLiteralObj[i][k].getString("symbol_type");
-				bodyLiteralType[i][k] = bodyLiteralObj[i][k].getString("literal_type");
-				bodyLiteralName[i][k] = bodyLiteralObj[i][k].getString("literal_name");
-				bodyLiteralArgsObj = bodyLiteralObj[i][k].getJSONArray("args");
-				bodyLiteralArgObj[i][k] = new JSONObject [bodyLiteralArgsObj.length()];
-				bodyLiteralArgType[i][k] = new String [bodyLiteralArgsObj.length()];
-				bodyLiteralArgName[i][k] = new String [bodyLiteralArgsObj.length()];
-				for (int j = 0; j < bodyLiteralArgsObj.length(); j++){
-					bodyLiteralArgObj[i][k][j] = bodyLiteralArgsObj.getJSONObject(j);
-					bodyLiteralArgType[i][k][j] = 
-							bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_type");
-					bodyLiteralArgName[i][k][j] = 
-							bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_name");
+			}			
+		}
+	}
+	
+	private void initData_NegTriggers() {
+		negTriggerRule = new JSONObject [logprogObj.length()];
+		fullNegTriggerObj = new JSONObject [logprogObj.length()]; //JSONObject
+		negTriggerFullHeadObj = new JSONObject [logprogObj.length()]; //JSONObject []
+		negTrigger_headType = new String [logprogObj.length()]; //String []
+		negTrigger_headLiteralObj = new JSONObject [logprogObj.length()];
+		negTrigger_headLiteralSymbolType = new String [logprogObj.length()];
+		negTriggerHead_LiteralType = new String [logprogObj.length()];
+		negTriggerHead_LiteralName = new String [logprogObj.length()];
+		negTriggerHead_LiteralArgObj = new JSONObject [logprogObj.length()] [];
+		negTriggerHead_LiteralArgType = new String [logprogObj.length()] [];
+		negTriggerHead_LiteralArgName = new String [logprogObj.length()] [];
+		
+//		negTrigger_bodyObj = new JSONArray();
+		negTrigger_bodyLiteralObj = new JSONObject [logprogObj.length()] []; //get from bodyObj
+		negTrigger_bodyLiteralSymbolType = new String [logprogObj.length()] [];
+		negTrigger_bodyLiteralType = new String [logprogObj.length()] [];
+		negTrigger_bodyLiteralName = new String [logprogObj.length()] [];
+		negTrigger_bodyLiteralArgObj = new JSONObject [logprogObj.length()] [] [];
+		negTrigger_bodyLiteralArgType = new String [logprogObj.length()] [] [];
+		negTriggerHead_LiteralArgsObj = new JSONArray();
+		negTrigger_bodyLiteralArgName = new String [logprogObj.length()] [] [];
+		
+		for (int i = 0; i < logprogObj.length(); i++) {
+//			fullHornClauseObj[i] = logprogObj.getJSONObject(i);
+//			hornClauseType[i] = fullHornClauseObj[i].getString("hc_type");
+//			mainHornClauseObj[i] = fullHornClauseObj[i].getJSONObject("logic_clause");
+				negTriggerRule[i] = bodyObj.getJSONObject(i).getJSONObject("neg_trigger_rule");
+//			fullHeadObj[i] = mainHornClauseObj[i].getJSONObject("head");
+				negTriggerFullHeadObj[i] = negTriggerRule[i].getJSONObject("neg_trigger_head");
+				negTriggerFullHeadObj[i] = bodyObj.getJSONObject(i).getJSONObject("neg_trigger_rule");
+//			headType[i] = fullHeadObj[i].getString("head_type");
+				negTrigger_headType[i] = negTriggerFullHeadObj[i].getString("head_type");
+//			headLiteralObj[i] = fullHeadObj[i].getJSONObject("literal");
+				negTrigger_headLiteralObj[i] = negTriggerFullHeadObj[i].getJSONObject("literal");
+//			headLiteralSymbolType[i] = headLiteralObj[i].getString("symbol_type");
+				negTrigger_headLiteralSymbolType[i] = negTrigger_headLiteralObj[i].getString("symbol_type");
+			
+//			headLiteralType[i] = headLiteralObj[i].getString("literal_type");
+				negTriggerHead_LiteralType[i] = negTrigger_headLiteralObj[i].getString("literal_type");
+//			headLiteralName[i] = headLiteralObj[i].getString("literal_name");
+				negTriggerHead_LiteralName[i] = negTrigger_headLiteralObj[i].getString("literal_name");
+			
+//			headLiteralArgsObj = headLiteralObj[i].getJSONArray("args");
+				negTriggerHead_LiteralArgsObj = negTrigger_headLiteralObj[i].getJSONArray("args"); //TODO check
+//			headLiteralArgObj[i] = new JSONObject [headLiteralArgsObj.length()];
+				negTriggerHead_LiteralArgObj[i] = new JSONObject [negTriggerHead_LiteralArgsObj.length()];
+//			headLiteralArgType[i] = new String [headLiteralArgsObj.length()];
+				negTriggerHead_LiteralArgType[i] = new String [negTriggerHead_LiteralArgsObj.length()];
+//			headLiteralArgName[i] = new String [headLiteralArgsObj.length()];
+				negTriggerHead_LiteralArgName[i] = new String[negTriggerHead_LiteralArgsObj.length()];
+			
+			for (int j = 0; j < headLiteralArgsObj.length(); j++){
+//				headLiteralArgObj[i][j] = headLiteralArgsObj.getJSONObject(j);
+					negTriggerHead_LiteralArgObj[i][j] = negTriggerHead_LiteralArgsObj.getJSONObject(j);
+//				headLiteralArgType[i][j] = headLiteralArgObj[i][j].getJSONObject("arg").getString("arg_type");
+					negTriggerHead_LiteralArgType[i][j] = negTriggerHead_LiteralArgObj[i][j].getJSONObject("arg").getString("arg_type");
+//				headLiteralArgName[i][j] = headLiteralArgObj[i][j].getJSONObject("arg").getString("arg_name");
+					negTriggerHead_LiteralArgName[i][j] = negTriggerHead_LiteralArgObj[i][j].getJSONObject("arg").getString("arg_name");
+			}
+			bodyObj = mainHornClauseObj[i].getJSONArray("body");
+				negTrigger_bodyObj = negTriggerRule[i].getJSONArray("neg_trigger_body");
+			System.out.println(mainHornClauseObj[i].getJSONArray("body"));
+			bodyLiteralObj[i] = new JSONObject [bodyObj.length()];
+				negTrigger_bodyLiteralObj[i] = new JSONObject[negTrigger_bodyObj.length()];
+			bodyLiteralSymbolType[i] = new String [bodyObj.length()];
+				negTrigger_bodyLiteralSymbolType[i] = new String [negTrigger_bodyObj.length()];
+			bodyLiteralType[i] = new String [bodyObj.length()];
+				negTrigger_bodyLiteralType[i] = new String [negTrigger_bodyObj.length()];
+			bodyLiteralName[i] = new String [bodyObj.length()-1]; //Added -1 because "neg_trigger_rule" doesn't have a "literal_name"
+				negTrigger_bodyLiteralName[i] = new String [negTrigger_bodyObj.length()];
+			bodyLiteralArgObj[i] = new JSONObject [bodyObj.length()] [];
+				negTrigger_bodyLiteralArgObj[i] = new JSONObject[negTrigger_bodyObj.length()][];
+			bodyLiteralArgType[i] = new String [bodyObj.length()] [];
+				negTrigger_bodyLiteralArgType[i] = new String [negTrigger_bodyObj.length()] [];
+			bodyLiteralArgName[i] = new String [bodyObj.length()] [];
+				negTrigger_bodyLiteralArgName[i] = new String [negTrigger_bodyObj.length()] [];
+			for (int k = 0; k < bodyObj.length(); k++){	
+				
+				if(!bodyObj.getJSONObject(k).isNull("neg_trigger_rule")) { //TODO: parse neg_trigger_body
+					System.out.println(k);
+					System.out.println("\nfound:\"neg_trigger_rule\"");
+					System.out.println("  - neg trig rule: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule"));
+					System.out.println("    - head: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONObject("neg_trigger_head"));
+					System.out.println("    - body: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body"));
+					System.out.println("     - body literal 1: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(0).getJSONObject("literal"));
+					System.out.println("     - body literal 2: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(1).getJSONObject("literal"));
+					
+				}else {
+					bodyLiteralObj[i][k] = bodyObj.getJSONObject(k).getJSONObject("literal");
+					bodyLiteralSymbolType[i][k] = bodyLiteralObj[i][k].getString("symbol_type");
+					bodyLiteralType[i][k] = bodyLiteralObj[i][k].getString("literal_type");
+					bodyLiteralName[i][k] = bodyLiteralObj[i][k].getString("literal_name");
+					bodyLiteralArgsObj = bodyLiteralObj[i][k].getJSONArray("args");
+					bodyLiteralArgObj[i][k] = new JSONObject [bodyLiteralArgsObj.length()];
+					bodyLiteralArgType[i][k] = new String [bodyLiteralArgsObj.length()];
+					bodyLiteralArgName[i][k] = new String [bodyLiteralArgsObj.length()];
+					for (int j = 0; j < bodyLiteralArgsObj.length(); j++){
+						bodyLiteralArgObj[i][k][j] = bodyLiteralArgsObj.getJSONObject(j);
+						bodyLiteralArgType[i][k][j] = 
+								bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_type");
+						bodyLiteralArgName[i][k][j] = 
+								bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_name");
+					}
 				}
 			}			
 		}
@@ -328,6 +429,7 @@ public class LoggingInstrumentation {
 		for(int i = 0; i < fullHornClauseObj.length; i++){
 			if (hornClauseType[i].equals("log_spec")){ // for all logging specs
 				for (int k = 0; k < bodyLiteralName[i].length; k++){
+					System.out.println("-bodyLiteralName " + bodyLiteralName[i][k] + " at " + i + ", " + k);
 					if (bodyLiteralName[i][k].equals("funccall")){ // if the body literal is an event or trigger
 						//TODO: check if bodyLiteralType is negative_trigger AND add to json file
 						if (bodyLiteralType[i][k].equals("negative_trigger")) {
