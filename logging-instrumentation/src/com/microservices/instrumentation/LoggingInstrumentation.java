@@ -160,17 +160,17 @@ public class LoggingInstrumentation {
 	
 	//---
 	private JSONObject[] negTriggerRule; //equivalent to mainHornClauseObj
-	private JSONObject[] fullNegTriggerObj;
+//	private JSONObject[] fullNegTriggerObj;
 	private JSONObject[] negTriggerFullHeadObj;
 	private String[] negTrigger_headType;
 	private JSONObject[] negTrigger_headLiteralObj;
 	private String[] negTrigger_headLiteralSymbolType;
-	private String[] negTriggerHead_LiteralType; //refactor from here
-	private String[] negTriggerHead_LiteralName;
-	private JSONArray negTriggerHead_LiteralArgsObj;
-	private JSONObject[][] negTriggerHead_LiteralArgObj;
-	private String[][] negTriggerHead_LiteralArgType;
-	private String[][] negTriggerHead_LiteralArgName;
+	private String[] negTrigger_headLiteralType; //refactor from here
+	private String[] negTrigger_headLiteralName;
+	private JSONArray negTrigger_headLiteralArgsObj;
+	private JSONObject[][] negTrigger_headLiteralArgObj;
+	private String[][] negTrigger_headLiteralArgType;
+	private String[][] negTrigger_headLiteralArgName;
 	
 	private JSONArray negTrigger_bodyObj;
 	private JSONObject[][] negTrigger_bodyLiteralObj;
@@ -296,39 +296,38 @@ public class LoggingInstrumentation {
 					System.out.println("     - body literal 2: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule").getJSONArray("neg_trigger_body").getJSONObject(1).getJSONObject("literal"));
 					initData_NegTriggers(k); //init negative Trigger Data
 					return;
-				}else {
-					bodyLiteralObj[i][k] = bodyObj.getJSONObject(k).getJSONObject("literal");
-					bodyLiteralSymbolType[i][k] = bodyLiteralObj[i][k].getString("symbol_type");
-					bodyLiteralType[i][k] = bodyLiteralObj[i][k].getString("literal_type");
-					bodyLiteralName[i][k] = bodyLiteralObj[i][k].getString("literal_name");
-					bodyLiteralArgsObj = bodyLiteralObj[i][k].getJSONArray("args");
-					bodyLiteralArgObj[i][k] = new JSONObject [bodyLiteralArgsObj.length()];
-					bodyLiteralArgType[i][k] = new String [bodyLiteralArgsObj.length()];
-					bodyLiteralArgName[i][k] = new String [bodyLiteralArgsObj.length()];
-					for (int j = 0; j < bodyLiteralArgsObj.length(); j++){
-						bodyLiteralArgObj[i][k][j] = bodyLiteralArgsObj.getJSONObject(j);
-						bodyLiteralArgType[i][k][j] = 
-								bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_type");
-						bodyLiteralArgName[i][k][j] = 
-								bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_name");
-					}
 				}
+				bodyLiteralObj[i][k] = bodyObj.getJSONObject(k).getJSONObject("literal");
+				bodyLiteralSymbolType[i][k] = bodyLiteralObj[i][k].getString("symbol_type");
+				bodyLiteralType[i][k] = bodyLiteralObj[i][k].getString("literal_type");
+				bodyLiteralName[i][k] = bodyLiteralObj[i][k].getString("literal_name");
+				bodyLiteralArgsObj = bodyLiteralObj[i][k].getJSONArray("args");
+				bodyLiteralArgObj[i][k] = new JSONObject [bodyLiteralArgsObj.length()];
+				bodyLiteralArgType[i][k] = new String [bodyLiteralArgsObj.length()];
+				bodyLiteralArgName[i][k] = new String [bodyLiteralArgsObj.length()];
+				for (int j = 0; j < bodyLiteralArgsObj.length(); j++){
+					bodyLiteralArgObj[i][k][j] = bodyLiteralArgsObj.getJSONObject(j);
+					bodyLiteralArgType[i][k][j] = 
+							bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_type");
+					bodyLiteralArgName[i][k][j] = 
+							bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_name");
+				}
+				
 			}			
 		}
 	}
 	
 	private void initData_NegTriggers(int negTriggerRulePos) {
 		negTriggerRule = new JSONObject [logprogObj.length()];
-		fullNegTriggerObj = new JSONObject [logprogObj.length()]; //JSONObject
 		negTriggerFullHeadObj = new JSONObject [logprogObj.length()]; //JSONObject []
 		negTrigger_headType = new String [logprogObj.length()]; //String []
 		negTrigger_headLiteralObj = new JSONObject [logprogObj.length()];
 		negTrigger_headLiteralSymbolType = new String [logprogObj.length()];
-		negTriggerHead_LiteralType = new String [logprogObj.length()];
-		negTriggerHead_LiteralName = new String [logprogObj.length()];
-		negTriggerHead_LiteralArgObj = new JSONObject [logprogObj.length()] [];
-		negTriggerHead_LiteralArgType = new String [logprogObj.length()] [];
-		negTriggerHead_LiteralArgName = new String [logprogObj.length()] [];
+		negTrigger_headLiteralType = new String [logprogObj.length()];
+		negTrigger_headLiteralName = new String [logprogObj.length()];
+		negTrigger_headLiteralArgObj = new JSONObject [logprogObj.length()] [];
+		negTrigger_headLiteralArgType = new String [logprogObj.length()] [];
+		negTrigger_headLiteralArgName = new String [logprogObj.length()] [];
 		
 //		negTrigger_bodyObj = new JSONArray();
 		negTrigger_bodyLiteralObj = new JSONObject [logprogObj.length()] []; //get from bodyObj
@@ -337,31 +336,31 @@ public class LoggingInstrumentation {
 		negTrigger_bodyLiteralName = new String [logprogObj.length()] [];
 		negTrigger_bodyLiteralArgObj = new JSONObject [logprogObj.length()] [] [];
 		negTrigger_bodyLiteralArgType = new String [logprogObj.length()] [] [];
-		negTriggerHead_LiteralArgsObj = new JSONArray();
+		negTrigger_headLiteralArgsObj = new JSONArray();
 		negTrigger_bodyLiteralArgName = new String [logprogObj.length()] [] [];
 		
 		System.out.println("\n--negTriggerRule[i] = " + bodyObj.getJSONObject(negTriggerRulePos).getJSONObject("neg_trigger_rule"));
 		for (int i = 0; i < logprogObj.length(); i++) {
 			negTriggerRule[i] = bodyObj.getJSONObject(negTriggerRulePos).getJSONObject("neg_trigger_rule");
 			negTriggerFullHeadObj[i] = negTriggerRule[i].getJSONObject("neg_trigger_head");
-				System.out.println("-negTriggerHead = " + negTriggerFullHeadObj[i]);
+				
 			negTrigger_headType[i] = negTriggerFullHeadObj[i].getString("head_type");
 				System.out.println(" negTriggerHeadType = " + negTrigger_headType[i]);
 			negTrigger_headLiteralObj[i] = negTriggerFullHeadObj[i].getJSONObject("literal");
 			negTrigger_headLiteralSymbolType[i] = negTrigger_headLiteralObj[i].getString("symbol_type");
 			
-			negTriggerHead_LiteralType[i] = negTrigger_headLiteralObj[i].getString("literal_type");
-			negTriggerHead_LiteralName[i] = negTrigger_headLiteralObj[i].getString("literal_name");
+			negTrigger_headLiteralType[i] = negTrigger_headLiteralObj[i].getString("literal_type");
+			negTrigger_headLiteralName[i] = negTrigger_headLiteralObj[i].getString("literal_name");
 			
-			negTriggerHead_LiteralArgsObj = negTrigger_headLiteralObj[i].getJSONArray("args"); //TODO check
-			negTriggerHead_LiteralArgObj[i] = new JSONObject [negTriggerHead_LiteralArgsObj.length()];
-			negTriggerHead_LiteralArgType[i] = new String [negTriggerHead_LiteralArgsObj.length()];
-			negTriggerHead_LiteralArgName[i] = new String[negTriggerHead_LiteralArgsObj.length()];
+			negTrigger_headLiteralArgsObj = negTrigger_headLiteralObj[i].getJSONArray("args"); //TODO check
+			negTrigger_headLiteralArgObj[i] = new JSONObject [negTrigger_headLiteralArgsObj.length()];
+			negTrigger_headLiteralArgType[i] = new String [negTrigger_headLiteralArgsObj.length()];
+			negTrigger_headLiteralArgName[i] = new String[negTrigger_headLiteralArgsObj.length()];
 			
 			for (int j = 0; j < headLiteralArgsObj.length(); j++){
-				negTriggerHead_LiteralArgObj[i][j] = negTriggerHead_LiteralArgsObj.getJSONObject(j);
-				negTriggerHead_LiteralArgType[i][j] = negTriggerHead_LiteralArgObj[i][j].getJSONObject("arg").getString("arg_type");
-				negTriggerHead_LiteralArgName[i][j] = negTriggerHead_LiteralArgObj[i][j].getJSONObject("arg").getString("arg_name");
+				negTrigger_headLiteralArgObj[i][j] = negTrigger_headLiteralArgsObj.getJSONObject(j);
+				negTrigger_headLiteralArgType[i][j] = negTrigger_headLiteralArgObj[i][j].getJSONObject("arg").getString("arg_type");
+				negTrigger_headLiteralArgName[i][j] = negTrigger_headLiteralArgObj[i][j].getJSONObject("arg").getString("arg_name");
 			}
 			
 			negTrigger_bodyObj = negTriggerRule[i].getJSONArray("neg_trigger_body");
@@ -376,7 +375,6 @@ public class LoggingInstrumentation {
 				negTrigger_bodyLiteralObj[i][k] = negTrigger_bodyObj.getJSONObject(k).getJSONObject("literal");
 				negTrigger_bodyLiteralSymbolType[i][k] = negTrigger_bodyLiteralObj[i][k].getString("symbol_type");
 				negTrigger_bodyLiteralType[i][k] = negTrigger_bodyLiteralObj[i][k].getString("literal_type");
-				System.out.println("---negTrigger_bodyLiteralType[i][k] = " + negTrigger_bodyLiteralType[i][k]);
 				negTrigger_bodyLiteralName[i][k] = negTrigger_bodyLiteralObj[i][k].getString("literal_name");
 				negTrigger_bodyLiteralArgsObj = negTrigger_bodyLiteralObj[i][k].getJSONArray("args");
 				negTrigger_bodyLiteralArgObj[i][k] = new JSONObject [negTrigger_bodyLiteralArgsObj.length()];
@@ -388,15 +386,19 @@ public class LoggingInstrumentation {
 							negTrigger_bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_type");
 					negTrigger_bodyLiteralArgName[i][k][j] = 
 							negTrigger_bodyLiteralArgObj[i][k][j].getJSONObject("arg").getString("arg_name");
-					
-					System.out.println("\n---");
-					System.out.println(negTrigger_bodyLiteralArgObj[i][k][j]);
-					System.out.println(negTrigger_bodyLiteralArgType[i][k][j]);
-					System.out.println(negTrigger_bodyLiteralArgName[i][k][j]);
 				}
 				
 			}			
 		}
+		System.out.println("---- lengths: " + negTrigger_bodyLiteralArgName.length + " " + negTrigger_bodyLiteralArgName[0].length + " " + negTrigger_bodyLiteralArgName[0][0].length);
+		
+		for(int i = 0; i<negTrigger_bodyLiteralArgName.length; i++) {
+			for(int j = 0; j<negTrigger_bodyLiteralArgName[0].length; j++) {
+				for(int k = 0; k<negTrigger_bodyLiteralArgName[0][0].length; k++)
+					System.out.println(negTrigger_bodyLiteralArgName[i][j][k]);
+			}
+		}
+
 	}
 	
 
@@ -729,7 +731,7 @@ public class LoggingInstrumentation {
 
 	}
 	
-	//TODO: assertClauses for lg
+
 	private String assertClauses() {
 		String assert_clauses = "";
 		for(int i = 0; i < headLiteralName.length; i++){
@@ -755,12 +757,7 @@ public class LoggingInstrumentation {
 			} 
 			if (bodyLiteralName[i].length != 0){ // if body is not empty
 				assert_clauses += " :- ";
-				for (int k = 0; k < bodyLiteralName[i].length; k++){
-					if (bodyLiteralType[i][k].equals("negative_trigger_invocation")) {
-						System.out.println("literal_type: " + bodyLiteralType[i][k]);
-						continue;
-					}
-					
+				for (int k = 0; k < bodyLiteralName[i].length; k++){				
 					assert_clauses += bodyLiteralName[i][k] + "(";
 					for (int j = 0; j < bodyLiteralArgName[i][k].length; j++){
 						//TODO: check if the type is negative trigger (if so, skip)
@@ -776,9 +773,9 @@ public class LoggingInstrumentation {
 					}
 					assert_clauses += ")";
 					if (k != bodyLiteralName[i].length - 1){ // if not the last body literal, put a comma (conj)
-						System.out.println(assert_clauses);
+//						System.out.println(assert_clauses);
 						assert_clauses += ", ";
-						System.out.println(assert_clauses);
+//						System.out.println(assert_clauses);
 					}
 					// set the goal and goal vars
 					if (headLiteralName[i].equals("loggedfunccall")) {
@@ -791,8 +788,89 @@ public class LoggingInstrumentation {
 			}		
 			assert_clauses += "))\");\n\t\t";
 		}
+		
+		assert_clauses += "\n";
+		assert_clauses += assertClausesNegTriggers();
+		System.out.println(assert_clauses);
 		return assert_clauses;	
 	}
+	
+	//TODO:
+	private String assertClausesNegTriggers() {
+		System.out.println("\n assertNT");
+		String assert_clauses = "";
+		assert_clauses += "ec.addFact(\"assert((neg_trigger(T0, T1, [U,P]) :- "; 
+		
+		
+		//	ec.addFact("assert(( neg_trigger(T0, T1, [U,P])"
+		//for T0, T1, [U,P] in body
+			//the # of T0 and T1 can be found with the # of funccall in Body, or maybe in bodyLiteralArgName[][][]
+		
+		
+		for(int i = 0; i < negTrigger_headLiteralName.length; i++){
+			
+			if (negTrigger_headType[i].equals("neg_pred")){
+				assert_clauses += negTrigger_headLiteralName[i] + "(";
+				for (int j = 0; j < negTrigger_headLiteralArgName[i].length; j++){
+					if (negTrigger_headLiteralName[i].equals("funccall") && j == 2) {
+						assert_clauses += "\\\"" + negTrigger_headLiteralArgName[i][j] + "\\\"";
+					}
+					else {
+						assert_clauses += negTrigger_headLiteralArgName[i][j];
+					}
+					if (j != negTrigger_headLiteralArgName[i].length - 1) { // if not the last arg, put a comma
+						assert_clauses += ", ";
+					}
+				}
+				assert_clauses += ")";
+				System.out.println(assert_clauses);
+				
+			} 			
+			else { // head type is empty!
+				assert_clauses += "false";
+			} 
+			if (negTrigger_bodyLiteralName[i].length != 0){ // if body is not empty
+				assert_clauses += ", ";
+				for (int k = 0; k < negTrigger_bodyLiteralName[i].length; k++){					
+					assert_clauses += negTrigger_bodyLiteralName[i][k] + "(";
+					System.out.println("--ENTERING J");
+					for (int j = 0; j < bodyLiteralArgName[i][k][0].length(); j++){
+						//TODO: check if the type is negative trigger (if so, skip)
+						System.out.println("\ni: " + i + " len: " + bodyLiteralArgName.length +
+											"\nj " + j + " len: " + bodyLiteralArgName[0].length + 
+											"\nk " + k + " length: " + bodyLiteralArgName[0][0].length);
+						System.out.println("hey " + negTrigger_bodyLiteralName[i][k]);
+						if (negTrigger_bodyLiteralName[i][k].equals("funccall") && j == 2) {
+							assert_clauses += "\\\"" + negTrigger_bodyLiteralArgName[i][k][j] + "\\\"";
+						}
+						else {
+							System.out.println("ijk bodyLiteralArgName" + negTrigger_bodyLiteralArgName[i][k][j]);
+							assert_clauses += negTrigger_bodyLiteralArgName[i][k][j];
+						}
+						if (j != negTrigger_bodyLiteralArgName[i][k].length - 1) { // if not the last arg, put a comma
+							assert_clauses += ", ";
+						}
+					}
+					assert_clauses += ")";
+					if (k != negTrigger_bodyLiteralName[i].length - 1){ // if not the last body literal, put a comma (conj)
+						assert_clauses += ", ";
+//						System.out.println(assert_clauses);
+						System.out.println("- assert clause NT , " + assert_clauses);
+					}
+					// set the goal and goal vars
+//					if (negTrigger_headLiteralName[i].equals("loggedfunccall")) {
+//						for (int j = 0; j < negTrigger_headLiteralArgName[i].length; j++){
+//							if (j != negTrigger_headLiteralArgName[i].length - 1) { // if not the last arg, put a comma
+//							}
+//						}
+//					}
+				}
+			}		
+			assert_clauses += "))\");\n\t\t";
+		}
+		return assert_clauses;	
+	}
+	
 
 	private String definePredicates() {
 		String define_predicates = "";

@@ -81,6 +81,8 @@ public class LoggingAspect {
 		
 		ec.addFact("assert((loggedfunccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), ==(U, user)))");
 		
+ec.addFact("assert((neg_trigger(T0, T1, [U,P]) :- funccall(T2, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass\", [U]), <(T2, T0), <(T1, T2)))");
+		
 	}
 	
 	private void addAssertionsFromDB(String filePath) {
