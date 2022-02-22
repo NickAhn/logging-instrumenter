@@ -399,7 +399,6 @@ public class LoggingInstrumentation {
 		for(int i = 0; i < fullHornClauseObj.length; i++){
 			if (hornClauseType[i].equals("log_spec")){ // for all logging specs
 				for (int k = 0; k < bodyLiteralName[i].length; k++){
-					System.out.println("-bodyLiteralName " + bodyLiteralName[i][k] + " at " + i + ", " + k);
 					if (bodyLiteralName[i][k].equals("funccall")){ // if the body literal is an event or trigger						
 						// extract the pointcut from the method path
 						String pointCut = bodyLiteralArgName[i][k][2];
@@ -756,7 +755,7 @@ public class LoggingInstrumentation {
 				lg += " :- ";
 				for (int k = 0; k < bodyLiteralName[i].length; k++){				
 					assert_clauses += bodyLiteralName[i][k] + "(";
-					lg += "(";
+					lg += bodyLiteralName[i][k] + "(";
 					for (int j = 0; j < bodyLiteralArgName[i][k].length; j++){
 						//TODO: check if the type is negative trigger (if so, skip)
 						if (bodyLiteralName[i][k].equals("funccall") && j == 2) {
