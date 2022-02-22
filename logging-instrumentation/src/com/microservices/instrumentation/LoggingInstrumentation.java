@@ -719,6 +719,7 @@ public class LoggingInstrumentation {
 	}
 	
 
+	//TODO: fix lg: not adding "funccall" to facts
 	private String assertClauses() {
 		String assert_clauses = "";
 		String lg = "ec.addFact(\"assert((lg(";

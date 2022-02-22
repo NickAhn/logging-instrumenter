@@ -83,5 +83,34 @@ public class EngineCommunication implements Runnable{
 				+ "ipObjectSpec('ArrayOfObject',L,LM)";
 		return;
 	}
+	
+	//Function to return list of string
+	public ArrayList<String> lg(String goal, String queryResponseFormat) {
+		G = goal;
+		T = queryResponseFormat;
+		GG = "findall(TM, ("+G+",buildTermModel("+T+",TM)), L), "
+				+ "ipObjectSpec('ArrayOfObject',L,LM)";
+		solutions = (Object[]) engine.deterministicGoal(GG,"[LM]")[0]; 
+		
+		// Convert Object to String
+		ArrayList<String> solutionList = new ArrayList<String>();
+		for(int i=0; i < solutions.length; i++) {
+			String temp = solutions[i].toString();
+			if (!solutionList.contains(temp)) {
+				solutionList.add(temp);
+			}
+		}
+		
+		return solutionList;
+	}
+
+	
+	/* Function to check if negative trigger's precondition holds for a certain lg
+	 * - Input: String: T0,T1,[U,P]
+	 * - Output: whether negative trigger precondition holds.
+	 * */
+	public boolean test(String lg) {
+		return engine.deterministicGoal("neg_trigger("+lg+")");
+	}
 }
 
