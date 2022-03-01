@@ -18,9 +18,10 @@ For example, in the microservices-based MRS, described in Figure \ref{X}, each m
 \setlength{\fboxsep}{0pt}%%%%%%%%
 \fbox{\tiny{
 \begin{mathpar}
-\forall t_0, \cdots, t_n, \mathit{xs_0}, \cdots, \mathit{xs_n} \, . \, \folp{Call}(t_0,A_0,B_0,\mathit{xs_0})
-\bigwedge_{i=1}^{n} \big(\folp{Call}(t_i,A_i,B_i,\mathit{xs_i}) \wedge t_i < t_0 \big) \wedge \varphi(t_0, \cdots, t_n) \wedge  
-\varphi'(\mathit{xs_0}, \cdots, \mathit{xs_n}) \implies \folp{LoggedCall}(A_0,B_0,\mathit{xs_0})
+\forall t_0, \cdots, t_n, \mathit{xs_0}, \cdots, \mathit{xs_n} \, . \, 
+\folp{Call}(t_0,A_0,B_0,\mathit{xs_0}) \bigwedge_{i=1}^{n} \big(\folp{Call}(t_i,A_i,B_i,\mathit{xs_i}) \wedge t_i < t_0 \big) \wedge \varphi(t_0, \cdots, t_n) \wedge \varphi'(\mathit{xs_0}, \cdots, \mathit{xs_n}) 
+\bigwedge_{j=1}^{m} \big( \forall t'_j, \mathit{ys}_j \, . \, \psi_j(\mathit{xs}_0, \cdots, \mathit{xs}_n, \mathit{ys}_j) \wedge \psi'_j(t_0, \cdots, t_n, t'_j) \implies \neg \folp{Call}(t'_j, A'_j, B'_j, \mathit{ys}_j) \big) 
+ \implies \folp{LoggedCall}(A_0,B_0,\mathit{xs_0})
 \end{mathpar}
 }}
 \caption{$\callpols$ clause structure.} 
