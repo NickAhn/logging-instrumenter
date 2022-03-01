@@ -35,10 +35,13 @@ For example, in the microservices-based MRS, described in Figure \ref{X}, each m
 \begin{mathpar}
 \codebasel(\mathtt{Authorization})(\mathtt{breakTheGlass}) = [\mathtt{breakTheGlass}^{\mathtt{Authorization}} \triangleq P] \mbox{~for~some~} P 
 
+\codebasel(\mathtt{Authorization})(\mathtt{mendTheGlass}) = [\mathtt{mendTheGlass}^{\mathtt{Authorization}} \triangleq P'] \mbox{~for~some~} P' 
+
+
 \codebasel(\mathtt{Patient})(\mathtt{getMedicalHistory}) = [\mathtt{getMedicalHistory}^{\mathtt{Patient}} \triangleq Q] \mbox{~for~some~} Q  
 
 
-\forall t_0, t_1, p, u \, . \, \folp{Call}(t_0,\mathtt{Patient}, \mathtt{getMedicalHistory},[p,u]) \wedge \folp{Call}(t_1,\mathtt{Authorization}, \mathtt{breakTheGlass},[u]) \wedge t_1 < t_0 \implies \folp{LoggedCall}(\mathtt{Patient}, \mathtt{getMedicalHistory},[p,u])
+\forall t_0, t_1, p, u \, . \, \folp{Call}(t_0,\mathtt{Patient}, \mathtt{getMedicalHistory},[p,u]) \wedge \folp{Call}(t_1,\mathtt{Authorization}, \mathtt{breakTheGlass},[u]) \wedge t_1 < t_0 \wedge (\forall t_2 \, . \, t_2 < t_0 \wedge t_1 < t_2 \implies \neg  \folp{Call}(t_1,\mathtt{Authorization}, \mathtt{mendTheGlass},[u])  ) \implies \folp{LoggedCall}(\mathtt{Patient}, \mathtt{getMedicalHistory},[p,u])
 
 \end{mathpar}
 }}
