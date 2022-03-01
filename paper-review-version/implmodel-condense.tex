@@ -1,0 +1,76 @@
+\section{A Brief Review of the Instrumentation Model} \label{sec:implmodel}
+
+In \cite{X}, we have explored the full formalization of the implementation model for instrumenting concurrent systems that guarantee the correctness of audit logs, according to logging specifications that go beyond Horn clauses. In this section, we review this model briefly. 
+
+\subsection{Source System Model} \label{sec:pi}
+
+The source system $\srclang$ is concurrent program, which is modeled in $\pi$-calculus \cite{parrow2001introduction}. Top-level components of $\srclang$, denoted by $A$, are called top-level agents. Top-level agents execute in parallel, and communicate among themselves as their functionality dictates. Some $A$ consists of internal modules and/or functions, modeled as subagents $B^A$. As part of the definition of the source system, we assume the existence of a codebases $\codebaseu$ and $\codebasel$ that include definitions of the form $A(x_1, \cdots, x_n) \triangleq \cdots$ and $B^A (x_1, \cdots, x_n) \triangleq \cdots$ resp.
+
+
+
+\subsection{A Class of Logging Specifications} \label{sec:logspec}
+Horn clause logic has been used to specify audit logging requirements in previous work \cite{X}, where certain events must take place so that audit logs are generated. In this paper, we go beyond Horn clauses in our implementation model to help specify not only the necessity of having certain events to occur, but also to ensure that another group of events do not take place. In this respect, we define a class of specifications that assert temporal relations among the events that must or must not transpire in different components (top-level agents) of the system. Using this extended class of specifications, a particular event must be logged, provided that a certain set of events have taken place and another set of events have not. We would call these different sets of events positive and negative triggers, resp. We use $\callpols$ to denote this class of specifications. In $\callpols$, each event is modeled as a sub-agent invocation, i.e., a module within one of the agents of the system. Figure \ref{fig:callpols} depicts the structure of specifications in $\callpols$. $\folp{Call}(t,A,B,mathit{xs})$ asserts the event of invoking sub-agent $B^A$ at time $t$ with list of parameters $\mathit{xs}$. $\phi$ and $\psi_j$ are possibly empty conjunctive sequence of literals of the form $t_i < t_j$. $A_0$ is called a \emph{logging event agent}, whereas other $A_i$s are called \emph{positive trigger agents}. $A'_j$s are called \emph{negative trigger agents}. Similarly, \emph{logging event sub-agent} refers to $B_0$, and other $B_i$s are called \emph{positive trigger sub-agents}. $B'_j$s are called \emph{negative trigger sub-agents}. \emph{Logging preconditions} are predicates $\folp{Call}(t_i,A_i,B_i,\tilde{x})$ for all $i \in \{1,\cdots, n\}$ and $\folp{Call}(t_j , A'_j , B'_j , \mathit{ys}_j )$ for all $j \in \{1, \cdots, m\}$. 
+
+For example, in the microservices-based MRS, described in Figure \ref{X}, each microservice, including Authorization and Patient, is a top-level agent in $\srclang$. Authorization may include modules to break and mend the glass, and Patient may have a functionality to read patient medical history. These functionalities are defined as part of $\codebasel$ (Figure \ref{X}). Moreover, Figure \ref{X} describes the logging specification in $\callpols$ that is associated with the break-the-glass policy. In this clause, $t_0$ and $t_1$ are timestamps, and $t_1$ precedes $t_0$. $p$ refers to the patient identifier, and $u$ is the user identifier who breaks the glass and attempts to read the medical history of p later on. Additionally, logging is preconditioned on the fact that the glass is not mended in between the events of breaking the glass and gaining access to the patient medical data. 
+
+
+\begin{figure}
+\setlength{\fboxsep}{0pt}%%%%%%%%
+\fbox{\tiny{
+\begin{mathpar}
+\forall t_0, \cdots, t_n, \mathit{xs_0}, \cdots, \mathit{xs_n} \, . \, \folp{Call}(t_0,A_0,B_0,\mathit{xs_0})
+\bigwedge_{i=1}^{n} \big(\folp{Call}(t_i,A_i,B_i,\mathit{xs_i}) \wedge t_i < t_0 \big) \wedge \varphi(t_0, \cdots, t_n) \wedge  
+\varphi'(\mathit{xs_0}, \cdots, \mathit{xs_n}) \implies \folp{LoggedCall}(A_0,B_0,\mathit{xs_0})
+\end{mathpar}
+}}
+\caption{$\callpols$ clause structure.} 
+\label{fig:callpols}
+\end{figure}
+
+
+\begin{figure}
+\setlength{\fboxsep}{0pt}%%%%%%%%
+\fbox{\tiny{
+\begin{mathpar}
+\codebasel(\mathtt{Authorization})(\mathtt{breakTheGlass}) = [\mathtt{breakTheGlass}^{\mathtt{Authorization}} \triangleq P] \mbox{~for~some~} P 
+
+\codebasel(\mathtt{Patient})(\mathtt{getMedicalHistory}) = [\mathtt{getMedicalHistory}^{\mathtt{Patient}} \triangleq Q] \mbox{~for~some~} Q  
+
+
+\forall t_0, t_1, p, u \, . \, \folp{Call}(t_0,\mathtt{Patient}, \mathtt{getMedicalHistory},[p,u]) \wedge \folp{Call}(t_1,\mathtt{Authorization}, \mathtt{breakTheGlass},[u]) \wedge t_1 < t_0 \implies \folp{LoggedCall}(\mathtt{Patient}, \mathtt{getMedicalHistory},[p,u])
+
+\end{mathpar}
+}}
+\caption{Example logging specification for an MRS.}
+\label{fig:exm-logspec}
+\end{figure}
+
+\subsection{Target System Model} \label{sec:pi-log}
+The instrumentation algorithm maps a $\srclang$ system to a target system, denoted by $\trglang$ system. Runtime environment of $\trglang$ includes a timing counter $t$, $\locprec$ that returns the set of logging preconditions transpired in a given agent, $\remprec$ that returns the set of logging preconditions that have transpired the triggers of a given agent, and $\logmap$ that stores the audit logs for a given agent. The preconditions in $\remprec$ must be communicated between a given agent and all triggers agents. Certain prefixes are added to $\trglang$ to facilitate storage and retrieval of information to these runtime components: 1) $\callev(A,B,\tilde{x})$ updates $\locprec(A)$ with predicate $\folp{Call}(t,A,B,\tilde{x})$, 2) $\addprecond(x,A)$ updates$\remprec(A)$ with precondition $x$, 3) $\sendprecond(x,A)$ converts $\locprec(A)$ to a transferable object and sends it though link $x$, and 4) $\emitev(A,B,\tilde{x})$ studies the derivability of $\folp{LoggedCall}(A,B,\tilde{x})$ and accordingly $\logmap(A)$ is updated with this predicate. 
+
+
+\subsection{Instrumentation Algorithm} \label{sec:inst-alg}
+Instrumentation algorithm $\rewrite$ takes a $\srclang$ system and a logging specification from $\callpols$, and produces a $\trglang$ system with the following details. $\rewrite$ adds fresh links $c_{ij}$ between every logging event agent $A_i$ and trigger agent $A_j$, in order to communicate logging preconditions (by $\sendprecond$ and $\addprecond$ prefixes). If sub-agent $B^A$ is a trigger, then its execution must be preceded by $\callev$ prefix, so that the logging precondition is stored in $\locprec(A)$. If sub-agent $B^A$ is a logging event agent, the execution of $B^A$ must be preceded by $\callev$, similar to the previous case. Next, it must communicate on appropriate links ($c_{ij}$s) with all trigger agents. To this end, $B^A$ is supposed to notify each of those agents to send their collected preconditions, and then it must add them to $\remprec(A)$. This is done using $\addprecond$ prefixes. Then, it should study whether the invocation needs to be logged, before following normal execution. This is facilitated by $\emitev$ prefix. 
+
+If $A_j$ is a trigger agent then it must be able to handle incoming requests for collected preconditions. This is done by adding a fresh sub-agent to $A_j$ that always listens for requests on the dedicated link ($c_{ij}$) between itself and the logging event agent. This sub-agent is denoted by $D_{ij}$. Upon receiving such a request, $D_{ij}$ sends back the preconditions, handled by prefix $\sendprecond$, and then continues to listen on $c_{ij}$.
+
+As an example consider the instrumentation of the MRS described in Figures \ref{fig:mrs-mics} and \ref{fig:exm-logspec}. According to the logging specification, $\mathtt{getMedicalHistory}^{\mathtt{Patient}}$ is the logging event, and $\mathtt{breakTheGlass}^{\mathtt{Authorization}}$ is the only trigger. $\rewrite$ instruments the system as described in Figure \ref{fig:exm-inst}.  A new link $c_{\mathtt{PA}}$ is established between the two agents, and sub-agents are instrumented accordingly. In addition, sub-agent $D_{\mathtt{PA}}$ is added to $\mathtt{Authorization}$ microservice that indefinitely responds to the requests from $\mathtt{Patient}$ microservice on $c_{\mathtt{PA}}$.
+
+\begin{figure}
+\setlength{\fboxsep}{0pt}%%%%%%%%
+\fbox{\tiny{
+\begin{mathpar}
+\codebasel'(\mathtt{Authorization})(\mathtt{breakTheGlass}) = \big[\mathtt{breakTheGlass}^{\mathtt{Authorization}}(u) \triangleq \callev(\mathtt{Authorization},\mathtt{breakTheGlass},[u]).P \big]
+
+\codebasel'(\mathtt{Patient})(\mathtt{getMedicalHistory}) = \big[ \mathtt{getMedicalHistory}^{\mathtt{Patient}}(p,u) \triangleq \callev(\mathtt{Patient},\mathtt{getMedicalHistory},[p,u]).\outprefix{c_{\mathtt{PA}}}{}.c_{\mathtt{PA}}(f). \addprecond(f,\mathtt{Patient}). \newline \emitev(\mathtt{Patient},\mathtt{getMedicalHistory},[p,u]).Q \big]
+
+
+\codebasel'(\mathtt{Authorization})(D_{\mathtt{PA}}) =  \big[ D{_{\mathtt{PA}}^{\mathtt{Authorization}}}(c_{\mathtt{PA}}) \triangleq 
+c_{\mathtt{PA}}.\sendprecond(c_{\mathtt{PA}},\mathtt{Authorization}). D{_{\mathtt{PA}}^{\mathtt{Authorization}}}(c_{\mathtt{PA}}) \big]
+
+\end{mathpar}
+}}
+\caption{Example Instrumentation of the MRS.}
+\label{fig:exm-inst}
+\end{figure}
+

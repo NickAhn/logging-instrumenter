@@ -1,0 +1,27 @@
+\title{Instrumenting Microservices for Concurrent Audit Logging: Beyond Horn Clauses}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
+
+
+\author{
+\IEEEauthorblockN{Nicolas Duri Ahn}
+\IEEEauthorblockA{\textit{Dept. of Computer Science} \\
+\textit{University of the Pacific}\\
+Stockton, CA, USA \\
+n\_ahn2@u.pacific.edu}
+\and
+\IEEEauthorblockN{Sepehr Amir-Mohammadian}
+\IEEEauthorblockA{\textit{Dept. of Computer Science} \\
+\textit{University of the Pacific}\\
+Stockton, CA, USA \\
+samirmohammadian@pacific.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+Instrumenting legacy code is an effective approach to enforce security policies, e.g., for the sake of access control and/or audit logging. Formal correctness of this approach for audit logging relies on semantic frameworks that leverage information algebra to model the information content of the generated audits logs and the program at runtime.  Previous work in this realm has demonstrated the applicability of instrumentation techniques in the enforcement of audit logging policies for systems with microservices architecture. However, the specified policies suffer from the limited expressivity power as they are confined to Horn clauses being directly used in logic programming engines. In this paper, we explore audit logging specifications that go beyond Horn clauses in certain aspects, and the ways in which these specifications are automatically enforced in microservices. In particular, we explore an instrumentation tool that rewrites Java-based microservices according to a JSON specification of audit logging requirements, where these logging requirements are not limited to Horn clauses. The rewritten set of microservices are then automatically enabled to generate audit logs that are shown to be formally correct.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Audit logs, concurrent systems, microservices, programming languages, security
+\end{IEEEkeywords}

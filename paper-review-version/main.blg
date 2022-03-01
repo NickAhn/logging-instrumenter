@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bib.bib
+I was expecting a `,' or a `}'---line 1112 of file bib.bib
+ : 
+ : @incollection{parrow2001introduction,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 1175 of file bib.bib
+ : @article{webb2013spring
+ :                        ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty year in baker2019novel
+Warning--missing institution in gordon2019precise
+
+Done.
+You've used 43 entries,
+            4024 wiz_defined-function locations,
+            1048 strings with 13655 characters,
+and the built_in function-call counts, 31346 in all, are:
+= -- 2452
+> -- 716
+< -- 251
++ -- 397
+- -- 118
+* -- 1440
+:= -- 4556
+add.period$ -- 98
+call.type$ -- 43
+change.case$ -- 49
+chr.to.int$ -- 621
+cite$ -- 45
+duplicate$ -- 2284
+empty$ -- 2755
+format.name$ -- 150
+if$ -- 7305
+int.to.chr$ -- 0
+int.to.str$ -- 43
+missing$ -- 398
+newline$ -- 152
+num.names$ -- 38
+pop$ -- 1007
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 2460
+stack$ -- 0
+substring$ -- 1503
+swap$ -- 1769
+text.length$ -- 44
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 43
+warning$ -- 2
+while$ -- 145
+width$ -- 45
+write$ -- 409
+(There were 2 error messages)

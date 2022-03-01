@@ -1,0 +1,98 @@
+\newtheorem{notation}{\textit{Notation}}[section]
+\newtheorem{definition}{Definition}[section]
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{corollary}{Corollary}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{conject}{Conjecture}[section]
+%\newtheorem{example}{Example}[section]
+%\newenvironment{proof}[1]{\noindent\textit{Proof.}\ #1}{\qed\medskip}
+% comments
+\newcommand{\sepehrsays}[1]{{\small\textbf{\textit{\color{blue}(*#1 -- Sep*)}}}}
+
+%basic semantics
+\newcommand{\trace}{\tau}
+\newcommand{\config}{\ensuremath{\kappa}}
+\newcommand{\configs}{\mathcal{K}}
+\newcommand{\traces}{\mathcal{T}}
+\newcommand{\maptoinfo}[1]{\lfloor #1 \rfloor}
+\newcommand{\ls}{\mathit{LS}}
+\newcommand{\alog}{\mathbb{L}}
+\newcommand{\alogs}{\mathcal{L}}
+\newcommand{\configlog}{\ensuremath{\mathit{logof}}}
+\newcommand{\tracelog}[2]{#1 \rightsquigarrow #2}
+\newcommand{\sysid}{\mathbf{\mathfrak{s}}}
+\newcommand{\rewrite}{\mathcal{I}}
+\newcommand{\tracesim}{\colonapprox}
+\newcommand{\simlogs}{\mathit{simlogs}}
+\newcommand{\trprefix}{\mathit{prefix}}
+
+%info algebra
+\newcommand{\infoset}{\Phi}
+\newcommand{\classes}{\Psi}
+\newcommand{\comb}[2]{#1 \otimes #2}
+\newcommand{\focus}[2]{{#1}^{\Rightarrow #2}}
+\newcommand{\leqinfo}{\preccurlyeq}
+
+
+%logic
+\newcommand{\closure}{\mathit{Closure}}
+\newcommand{\phifol}{\Phi_{\mathit{FOL}}}
+\newcommand{\predsyms}{\mathit{Preds}}
+\newcommand{\langfol}[1]{\mathit{FOL}({#1})}
+\newcommand{\psifol}{\Psi_{\mathit{FOL}}}
+\newcommand{\toFOL}[1]{\ensuremath{\mathit{toFOL}(#1)}}
+\newcommand{\spec}{\mathit{spec}}
+\newcommand{\callpols}{{\mathcal{LS}_{\mathit{call}}}}
+\newcommand{\folp}[1]{\mathrm{#1}}
+\newcommand{\triggers}{\mathit{Triggers}}
+\newcommand{\logevent}{\mathit{Logevent}}
+\newcommand{\guidelines}{\Gamma_G}
+
+
+
+%pi
+\newcommand{\srclang}{\Pi}
+\newcommand{\trglang}{\Pi_{\mathrm{log}}}
+\newcommand{\names}{\mathcal{N}}
+\newcommand{\prefix}{\alpha}
+\newcommand{\inprefix}[2]{#1(#2)}
+\newcommand{\outprefix}[2]{\bar{#1}#2}
+%\newcommand{\silprefix}{\tau}
+\newcommand{\agents}{\mathcal{A}}
+\newcommand{\topagents}{\mathcal{A}_\mathcal{U}}
+\newcommand{\locagents}{\mathcal{A}_\mathcal{L}}
+\newcommand{\nilproc}{\textbf{0}}
+%\newcommand{\ifproc}[3]{\texttt{if~} #1 = #2 \texttt{~then~} #3}
+%\newcommand{\ifnproc}[3]{\texttt{if~} #1 \neq #2 \texttt{~then~} #3}
+\newcommand{\newproc}[2]{(\nu #1)#2}
+%\newcommand{\procs}{\mathcal{P}}
+\newcommand{\codebaseu}{\mathcal{C}_\mathcal{U}}
+\newcommand{\codebasel}{\mathcal{C}_\mathcal{L}}
+\newcommand{\bn}[1]{\mathit{bn}(#1)}
+\newcommand{\fn}[1]{\mathit{fn}(#1)}
+\newcommand{\subst}{\sigma}
+\newcommand{\cntxt}{\mathcal{E}}
+\newcommand{\congr}{\equiv}
+\newcommand{\boundout}[2]{\bar{#1}\nu#2}
+%\newcommand{\action}{\prefix}
+%%\newcommand{\redx}[1]{\xrightarrow{#1}} % for labeled reduction
+\newcommand{\redx}{\longrightarrow} % for unlabeled reduction
+\newcommand{\callev}{\mathsf{callEvent}}
+\newcommand{\emitev}{\mathsf{emit}}
+\newcommand{\addprecond}{\mathsf{addPrecond}}
+\newcommand{\sendprecond}{\mathsf{sendPrecond}}
+\newcommand{\defs}{\mathcal{D}}
+\newcommand{\cbprem}{\vartriangleright}
+\newcommand{\cbpremtr}{\blacktriangleright}
+\newcommand{\locprec}{\Delta} % local preconditions
+\newcommand{\remprec}{\Sigma} % remote preconditions
+\newcommand{\pwrset}{\mathcal{P}}
+\newcommand{\logmap}{\Lambda} % log of each agent
+\newcommand{\trim}{\mathit{trim}}
+\newcommand{\lherb}{\mathcal{H}}
+\newcommand{\tail}{\mathit{tail}}
+
+
+%impl
+\newcommand{\tool}{\texttt{LogInst}}
+\newcommand{\demo}{\mathtt{MRS}_{\mathtt{Demo}}}
