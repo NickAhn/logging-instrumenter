@@ -54,17 +54,26 @@ The instrumentation algorithm maps a $\srclang$ system to a target system, denot
 
 
 \subsection{Instrumentation Algorithm} \label{sec:inst-alg}
-Instrumentation algorithm $\rewrite$ takes a $\srclang$ system and a logging specification from $\callpols$, and produces a $\trglang$ system with the following details. $\rewrite$ adds fresh links $c_{ij}$ between every logging event agent $A_i$ and trigger agent $A_j$, in order to communicate logging preconditions (by $\sendprecond$ and $\addprecond$ prefixes). If sub-agent $B^A$ is a trigger, then its execution must be preceded by $\callev$ prefix, so that the logging precondition is stored in $\locprec(A)$. If sub-agent $B^A$ is a logging event agent, the execution of $B^A$ must be preceded by $\callev$, similar to the previous case. Next, it must communicate on appropriate links ($c_{ij}$s) with all trigger agents. To this end, $B^A$ is supposed to notify each of those agents to send their collected preconditions, and then it must add them to $\remprec(A)$. This is done using $\addprecond$ prefixes. Then, it should study whether the invocation needs to be logged, before following normal execution. This is facilitated by $\emitev$ prefix. 
+Given a logging specification in $\ls \in \callpols$, algorithm $\rewrite$ translates a $\srclang$-system into a $\trglang$-system with concurrent audit logging capabilities to support $\ls$. In the following we briefly point out main aspects of how $\rewrite$ works. 
 
-If $A_j$ is a trigger agent then it must be able to handle incoming requests for collected preconditions. This is done by adding a fresh sub-agent to $A_j$ that always listens for requests on the dedicated link ($c_{ij}$) between itself and the logging event agent. This sub-agent is denoted by $D_{ij}$. Upon receiving such a request, $D_{ij}$ sends back the preconditions, handled by prefix $\sendprecond$, and then continues to listen on $c_{ij}$.
+If $A_i$ is a logging event agent and $A_j$ is a positive or negative trigger agent, a fresh link $c_{ij}$ is added between them. This link is used to communicate locally transpired trigger events that are stored in trigger agents' $\locprec$ component. $\sendprecond$ and $\addprecond$ prefixes are used for this purpose.
 
-As an example consider the instrumentation of the MRS described in Figures \ref{fig:mrs-mics} and \ref{fig:exm-logspec}. According to the logging specification, $\mathtt{getMedicalHistory}^{\mathtt{Patient}}$ is the logging event, and $\mathtt{breakTheGlass}^{\mathtt{Authorization}}$ is the only trigger. $\rewrite$ instruments the system as described in Figure \ref{fig:exm-inst}.  A new link $c_{\mathtt{PA}}$ is established between the two agents, and sub-agents are instrumented accordingly. In addition, sub-agent $D_{\mathtt{PA}}$ is added to $\mathtt{Authorization}$ microservice that indefinitely responds to the requests from $\mathtt{Patient}$ microservice on $c_{\mathtt{PA}}$.
+$\rewrite$ inserts prefix $\callev$ before at the starting point of each negative/positive trigger sub-agent. This ensures storing trigger events in $\locprec$. 
+
+$\callev$  is also inserted at the starting point of logging event sub-agents to capture logging events in $\locprec$ component of the corresponding agents. In addition, $\addprecond$ is inserted to notify all positive/negative trigger agents to send their trigger events through the established $c_{ij}$ link to the logging event tigger. The received trigger events are then stored in $\remprec$ component of the logging event agent. Finally, the logging event must check if the invocation of logging event sub-agent will be logged in $\logmap$. For this purpose, $\emitev$ is inserted.
+
+Each positive/negative trigger $A_j$ must be able to respond to the requests by some logging event agent $A_i$ on the $c_{ij}$ link. To this end, $\rewrite$ introduces new sub-agent $D_{ij}$ in code base of $A_j$ that indefinitely listens on that link and returns the content of $\locprec$ on the same link. This is accomplished by $\sendprecond$ prefix.
+
+As an example, having the definitions in Figure \ref{fig:exm-logspec} for an MRS, $\rewrite$ modifies the definition of sub-agents  $\mathtt{breakTheGlass}^{\mathtt{Authorization}}$, $\mathtt{mendTheGlass}^{\mathtt{Authorization}}$ and $\mathtt{getMedicalHistory}^{\mathtt{Patient}}$ by injecting proper prefixes at their starting points. In addition, a new link $c_{\mathtt{PA}}$ is introduced between $\mathtt{Authorization}$ and $\mathtt{Patient}$ agents, and a new sub-agent  $D_{\mathtt{PA}}^{\mathtt{Authorization}}$ is added that listens on $c_{\mathtt{PA}}$ indefinitely for requests from  $\mathtt{Patient}$ and responds with locally transpired trigger events, i.e., invocations to $\mathtt{breakTheGlass}$ (positive) and $\mathtt{mendTheGlass}$ (negative) in this example.
+
 
 \begin{figure}
 \setlength{\fboxsep}{0pt}%%%%%%%%
 \fbox{\tiny{
 \begin{mathpar}
 \codebasel'(\mathtt{Authorization})(\mathtt{breakTheGlass}) = \big[\mathtt{breakTheGlass}^{\mathtt{Authorization}}(u) \triangleq \callev(\mathtt{Authorization},\mathtt{breakTheGlass},[u]).P \big]
+
+\codebasel'(\mathtt{Authorization})(\mathtt{mendTheGlass}) = \big[\mathtt{mendTheGlass}^{\mathtt{Authorization}}(u) \triangleq \callev(\mathtt{Authorization},\mathtt{mendTheGlass},[u]).P' \big]
 
 \codebasel'(\mathtt{Patient})(\mathtt{getMedicalHistory}) = \big[ \mathtt{getMedicalHistory}^{\mathtt{Patient}}(p,u) \triangleq \callev(\mathtt{Patient},\mathtt{getMedicalHistory},[p,u]).\outprefix{c_{\mathtt{PA}}}{}.c_{\mathtt{PA}}(f). \addprecond(f,\mathtt{Patient}). \newline \emitev(\mathtt{Patient},\mathtt{getMedicalHistory},[p,u]).Q \big]
 

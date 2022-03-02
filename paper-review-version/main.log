@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  28 FEB 2022 18:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  2 MAR 2022 08:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -488,7 +488,18 @@ Overfull \hbox (2.55002pt too wide) in paragraph at lines 47--48
  []
 
 [2 <./figs/mrs-mics2-eps-converted-to.pdf>]
-Overfull \hbox (2.55002pt too wide) in paragraph at lines 76--77
+Underfull \hbox (badness 2894) in paragraph at lines 67--68
+[]\OT1/ptm/m/n/10 As an ex-am-ple, hav-ing the def-i-ni-tions in Fig-ure 3[]
+ []
+
+
+Underfull \hbox (badness 2922) in paragraph at lines 67--68
+\OT1/ptm/m/n/10 for an MRS, $\OMS/cmsy/m/n/10 I$ \OT1/ptm/m/n/10 mod-i-fies the
+ def-i-ni-tion of sub-agents
+ []
+
+
+Overfull \hbox (2.55002pt too wide) in paragraph at lines 85--86
 [][] 
  []
 
@@ -583,6 +594,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--158
 [4]
 
 LaTeX Warning: Citation `github1' on page 5 undefined on input line 232.
+
+
+Underfull \vbox (badness 1348) has occurred while \output is active []
 
 Package epstopdf Info: Source file: <./figs/log-inst.eps>
 (epstopdf)                    date: 2020-05-11 19:13:18
@@ -690,9 +704,6 @@ Before submitting the final camera ready copy, remember to:
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  6973 strings out of 480608
@@ -729,7 +740,7 @@ pe1/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utm
 bi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (7 pages, 351365 bytes).
+Output written on main.pdf (7 pages, 352005 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams
