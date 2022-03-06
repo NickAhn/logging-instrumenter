@@ -1,16 +1,23 @@
 \relax 
-\citation{owasp-top-ten}
-\citation{cwe778}
+\citation{cve778,owasp-top-ten}
 \citation{cwe779}
+\citation{https://www.trendmicro.com/vinfo/de/security/news/cyber-attacks/why-do-attackers-target-industrial-control-systems}
 \citation{Kohlas14}
+\citation{amir-chong-skalka-law15}
 \citation{amir-chong-skalka-post16}
-\citation{amir-chong-skalka-post16}
+\citation{amir-skalka-plas16,jcs20}
 \citation{lsfa20}
-\citation{zion}
+\citation{https://www.businesswire.com/news/home/20200716005101/en/O’Reilly’s-Microservices-Adoption-in-2020-Report-Finds-that-92-of-Organizations-are-Experiencing-Success-with-Microservices}
+\citation{https://www.statista.com/statistics/1233937/microservices-adoption-level-organization/}
+\citation{lsfa20}
+\citation{stpsa21}
+\citation{tr21}
 \providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}\protected@file@percent }
 \newlabel{sec:intro}{{I}{1}}
 \citation{matthews-gaebel-hie09}
+\citation{lsfa20}
+\citation{stpsa21}
 \citation{X}
 \citation{parrow2001introduction}
 \citation{X}
@@ -24,29 +31,29 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}A Class of Logging Specifications}{2}\protected@file@percent }
 \newlabel{sec:logspec}{{\mbox  {II-B}}{2}}
 \citation{github1}
-\citation{swi}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces ${\mathit  {Spec}_{\mathit  {log}}}$ clause structure.\relax }}{3}\protected@file@percent }
 \newlabel{fig:callpols}{{2}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example logging specification for an MRS.\relax }}{3}\protected@file@percent }
 \newlabel{fig:exm-logspec}{{3}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Target System Model}{3}\protected@file@percent }
 \newlabel{sec:pi-log}{{\mbox  {II-C}}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Instrumentation Algorithm}{3}\protected@file@percent }
-\newlabel{sec:inst-alg}{{\mbox  {II-D}}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example Instrumentation of the MRS.\relax }}{3}\protected@file@percent }
 \newlabel{fig:exm-inst}{{4}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Instrumentation Algorithm}{3}\protected@file@percent }
+\newlabel{sec:inst-alg}{{\mbox  {II-D}}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Instrumenting Microservices}{3}\protected@file@percent }
 \newlabel{sec:impl}{{III}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Instrumentation Tool: $\texttt  {LogInst}$}{3}\protected@file@percent }
-\newlabel{sec:impl-tool}{{\mbox  {III-A}}{3}}
+\citation{swi}
 \citation{calejo2004interprolog}
 \citation{github2}
 \citation{webb2013spring}
-\citation{github1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Instrumentation Tool: $\texttt  {LogInst}$}{4}\protected@file@percent }
+\newlabel{sec:impl-tool}{{\mbox  {III-A}}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Pseudocode of \textit  {before} advice for triggers and logging events.\relax }}{4}\protected@file@percent }
 \newlabel{fig:before-asp}{{5}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Case Study: Instrumenting $\mathtt  {MRS}_{\mathtt  {Demo}}$ with $\texttt  {LogInst}$}{4}\protected@file@percent }
 \newlabel{sec:cstudy}{{\mbox  {III-B}}{4}}
+\citation{github1}
 \citation{github1}
 \citation{microservices,guidi2017microservices,soldani2018pains,salibindla2018microservices}
 \citation{micro-oreilly,nkomo2019software,nehme2019securing}
@@ -64,6 +71,10 @@
 \citation{theorey_accountability}
 \citation{AURA,apple}
 \citation{bavera2015justification,ricciotti2017strongly}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Different versions of break-the-glass policy specified as a Horn clause.\relax }}{5}\protected@file@percent }
+\newlabel{fig:brk-horn}{{6}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Related Work}{5}\protected@file@percent }
+\newlabel{sec:relwork}{{IV}{5}}
 \citation{Kohlas14}
 \citation{amir-chong-skalka-post16}
 \citation{lsfa20}
@@ -71,10 +82,6 @@
 \citation{gordon2019precise}
 \citation{pasquier2017practical}
 \citation{capobianco2017accessprov}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Different versions of break-the-glass policy specified as a Horn clause.\relax }}{5}\protected@file@percent }
-\newlabel{fig:brk-horn}{{6}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Related Work}{5}\protected@file@percent }
-\newlabel{sec:relwork}{{IV}{5}}
 \bibstyle{IEEEtran}
 \bibdata{bib}
 \bibcite{owasp-top-ten}{1}
@@ -98,6 +105,16 @@
 \bibcite{nehme2019securing}{19}
 \bibcite{kuber}{20}
 \bibcite{nguyen2019applying}{21}
+\newlabel{fig:log-inst}{{7a}{6}}
+\newlabel{sub@fig:log-inst}{{a}{6}}
+\newlabel{fig:mrs-mics-target}{{7b}{6}}
+\newlabel{sub@fig:mrs-mics-target}{{b}{6}}
+\newlabel{fig:mrs-mics-target2}{{7c}{6}}
+\newlabel{sub@fig:mrs-mics-target2}{{c}{6}}
+\newlabel{fig:mrs-structure}{{7}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{6}\protected@file@percent }
+\newlabel{sec:conclusion}{{V}{6}}
+\@writefile{toc}{\contentsline {section}{References}{6}\protected@file@percent }
 \bibcite{baker2019novel}{22}
 \bibcite{kazanavivcius2019migrating}{23}
 \bibcite{curator}{24}
@@ -111,16 +128,6 @@
 \bibcite{logic_audit}{32}
 \bibcite{theorey_accountability}{33}
 \bibcite{AURA}{34}
-\newlabel{fig:log-inst}{{7a}{6}}
-\newlabel{sub@fig:log-inst}{{a}{6}}
-\newlabel{fig:mrs-mics-target}{{7b}{6}}
-\newlabel{sub@fig:mrs-mics-target}{{b}{6}}
-\newlabel{fig:mrs-mics-target2}{{7c}{6}}
-\newlabel{sub@fig:mrs-mics-target2}{{c}{6}}
-\newlabel{fig:mrs-structure}{{7}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{6}\protected@file@percent }
-\newlabel{sec:conclusion}{{V}{6}}
-\@writefile{toc}{\contentsline {section}{References}{6}\protected@file@percent }
 \bibcite{apple}{35}
 \bibcite{bavera2015justification}{36}
 \bibcite{ricciotti2017strongly}{37}

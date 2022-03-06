@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  2 MAR 2022 08:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  6 MAR 2022 11:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -426,11 +426,60 @@ Package caption Info: End \AtBeginDocument code.
 (./macros.tex
 \c@notation=\count283
 \c@definition=\count284
-) (./frontmatter.tex) (./intro.tex [1{/usr/local/texlive/2020/texmf-var/fonts/m
-ap/pdftex/updmap/pdftex.map}
+) (./frontmatter.tex) (./intro.tex
+
+LaTeX Warning: Citation `cve778' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `https://www.trendmicro.com/vinfo/de/security/news/cybe
+r-attacks/why-do-attackers-target-industrial-control-systems' on page 1 undefin
+ed on input line 4.
+
+
+LaTeX Warning: Citation `amir-chong-skalka-law15' on page 1 undefined on input 
+line 7.
+
+
+LaTeX Warning: Citation `amir-skalka-plas16' on page 1 undefined on input line 
+7.
+
+
+LaTeX Warning: Citation `jcs20' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation `https://www.businesswire.com/news/home/20200716005101/
+en/O’Reilly’s-Microservices-Adoption-in-2020-Report-Finds-that-92-of-Organi
+zations-are-Experiencing-Success-with-Microservices' on page 1 undefined on inp
+ut line 10.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
+
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+LaTeX Warning: Citation `https://www.statista.com/statistics/1233937/microservi
+ces-adoption-level-organization/' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Citation `stpsa21' on page 1 undefined on input line 13.
+
+
+LaTeX Warning: Citation `tr21' on page 1 undefined on input line 15.
+
+[1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
+
+LaTeX Warning: Citation `stpsa21' on page 2 undefined on input line 21.
+
 Package epstopdf Info: Source file: <./figs/mrs-mics2.eps>
 (epstopdf)                    date: 2020-06-04 18:25:28
 (epstopdf)                    size: 26705 bytes
@@ -439,43 +488,35 @@ Package epstopdf Info: Source file: <./figs/mrs-mics2.eps>
 (epstopdf)                    size: 12268 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/mrs-mics2-eps-conve
 rted-to.pdf ./figs/mrs-mics2.eps>
-(epstopdf)             \includegraphics on input line 23.
+(epstopdf)             \includegraphics on input line 25.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/mrs-mics2-eps-convert
 ed-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<./figs/mrs-mics2-eps-converted-to.pdf, id=10, 432.61626pt x 192.72pt>
+<./figs/mrs-mics2-eps-converted-to.pdf, id=11, 432.61626pt x 192.72pt>
 File: ./figs/mrs-mics2-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/mrs-mics2-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/mrs-mics2-eps-converted-to.pdf  used on input l
-ine 23.
+ine 25.
 (pdftex.def)             Requested size: 232.19843pt x 103.43793pt.
 ) (./implmodel-condense.tex
 
 LaTeX Warning: Citation `X' on page 2 undefined on input line 3.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
-(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
-
-(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 
 LaTeX Warning: Citation `X' on page 2 undefined on input line 12.
 
+[2 <./figs/mrs-mics2-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `X' on page 2 undefined on input line 14.
-
-
-LaTeX Warning: Reference `X' on page 2 undefined on input line 14.
+LaTeX Warning: Reference `X' on page 3 undefined on input line 14.
 
 
-LaTeX Warning: Reference `X' on page 2 undefined on input line 14.
+LaTeX Warning: Reference `X' on page 3 undefined on input line 14.
+
+
+LaTeX Warning: Reference `X' on page 3 undefined on input line 14.
 
 
 Overfull \hbox (2.55002pt too wide) in paragraph at lines 26--27
@@ -487,7 +528,7 @@ Overfull \hbox (2.55002pt too wide) in paragraph at lines 47--48
 [][] 
  []
 
-[2 <./figs/mrs-mics2-eps-converted-to.pdf>]
+
 Underfull \hbox (badness 2894) in paragraph at lines 67--68
 []\OT1/ptm/m/n/10 As an ex-am-ple, hav-ing the def-i-ni-tions in Fig-ure 3[]
  []
@@ -525,8 +566,9 @@ n/10 I$ \OT1/ptm/m/n/10 for
 
 LaTeX Warning: Citation `github2' on page 4 undefined on input line 97.
 
+[4]
 
-LaTeX Warning: Citation `github1' on page 4 undefined on input line 155.
+LaTeX Warning: Citation `github1' on page 5 undefined on input line 155.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 155--158
@@ -591,12 +633,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--158
 \OT1/pcr/m/n/10 PatientController.getPatientMedHistByName\OT1/ptm/m/n/10 ,
  []
 
-[4]
 
 LaTeX Warning: Citation `github1' on page 5 undefined on input line 232.
-
-
-Underfull \vbox (badness 1348) has occurred while \output is active []
 
 Package epstopdf Info: Source file: <./figs/log-inst.eps>
 (epstopdf)                    date: 2020-05-11 19:13:18
@@ -680,7 +718,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 254--256
  [][] 
  []
 
-) (./relwork.tex) (./conclusion.tex [5]) (./main.bbl
+) (./relwork.tex [5]) (./conclusion.tex) (./main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 25--27
 []\OT1/ptm/m/n/8 ``Top 10-2017 A10-Insufficient Log-ging & Mon-i-tor-ing,''
  []
@@ -706,10 +744,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6973 strings out of 480608
- 107246 string characters out of 5903631
- 363891 words of memory out of 5000000
- 22729 multiletter control sequences out of 15000+600000
+ 6982 strings out of 480608
+ 107711 string characters out of 5903631
+ 362891 words of memory out of 5000000
+ 22738 multiletter control sequences out of 15000+600000
  583199 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,11n,96p,1925b,624s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -740,7 +778,7 @@ pe1/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw
 /times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utm
 bi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (7 pages, 352005 bytes).
+Output written on main.pdf (7 pages, 353886 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams
