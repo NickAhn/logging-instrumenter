@@ -115,7 +115,7 @@ public class LoggingInstrumentation {
 					"		addAssertionsFromDB(localDBPath);\n" + 
 					"		addAssertionsFromDB(remoteDBPath);\n" + 
 					"		\n" +
-					"		ArrayList<String> lgList = ec.lg(LG, T_LG);	\n"
+					"		ArrayList<String> lgList = ec.lg(<LG>, <T_LG>);	\n"
 					+ "		for(String lg : lgList) {\n"
 					+ "			if(ec.test(lg)) {\n"
 					+ "				System.out.println(\"precondition is \" + ec.test(lg));\n"
@@ -707,6 +707,8 @@ public class LoggingInstrumentation {
 							}
 						}
 						aspects = aspects.replace("<GET_REQS>", getReqs);
+						aspects = aspects.replace("<LG>", "\"lg" + getLGGoal() + "\"");
+						aspects = aspects.replace("<T_LG>", "\"" + getLGGoal() + "\"");
 						//TODO: add <LG>
 					}
 					content = content.replace("<ASPECTS>", aspects);
@@ -721,6 +723,23 @@ public class LoggingInstrumentation {
 
 	}
 	
+	// Used in addLoggingEventLoggingAspect() to replace <LG> and <LG_T>
+	// return: Response format for query for LGs
+	private String getLGGoal() {
+		String goal = "(";
+		int counter = 0;
+		
+		for(int i = 0; i<bodyLiteralName[0].length; i++) {
+			if(bodyLiteralName[0][i].equals("funccall")) {
+				goal += "X" + counter + ",";
+				counter++;
+			}
+		}
+		
+		goal += "X" + counter + ")";
+		System.out.println(goal);
+		return goal;
+	}
 
 	private String assertClauses() {
 		String assert_clauses = "";

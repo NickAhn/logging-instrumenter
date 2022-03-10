@@ -73,7 +73,7 @@ public class LoggingAspect {
 		addAssertionsFromDB(localDBPath);
 		addAssertionsFromDB(remoteDBPath);
 		
-		ArrayList<String> lgList = ec.lg(LG, T_LG);	
+		ArrayList<String> lgList = ec.lg("lg(X0,X1,X2)", "(X0,X1,X2)");	
 		for(String lg : lgList) {
 			if(ec.test(lg)) {
 				System.out.println("precondition is " + ec.test(lg));
@@ -88,13 +88,12 @@ public class LoggingAspect {
 		ec.addFact("dynamic loggedfunccall/4 as incremental"); 
 		ec.addFact("dynamic funccall/4 as incremental"); 
 		ec.addFact("dynamic funccall/4 as incremental"); 
-		ec.addFact("dynamic funccall/4 as incremental"); 
 		
-		ec.addFact("assert((loggedfunccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), funccall(T3, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.getBTGUsers\", []), <(T3, T0), ==(U, user)))");
+		ec.addFact("assert((loggedfunccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), ==(U, user)))");
 		
-ec.addFact("assert((lg(T0,T1,T3,[U,P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), funccall(T3, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.getBTGUsers\", []), <(T3, T0), ==(U, user)))");
+ec.addFact("assert((lg(T0,T1,[U,P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), ==(U, user)))");
 		
-ec.addFact("assert((neg_trigger(T0,T1,T3,[U,P]) :- funccall(T2, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass\", [U]), <(T2, T0), <(T1, T2)))");
+ec.addFact("assert((neg_trigger(T0,T1,[U,P]) :- funccall(T2, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass\", [U]), <(T2, T0), <(T1, T2)))");
 		
 	}
 	
