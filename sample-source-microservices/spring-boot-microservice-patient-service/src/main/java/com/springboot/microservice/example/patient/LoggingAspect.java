@@ -42,8 +42,8 @@ public class LoggingAspect {
 	static String G = "loggedfunccall(X0,X1,X2,X3)"; // goal
 	static String T = "(X0, X1, X2, X3)";	//response format
 
-	static String LG = "lg(X0,X1,X2,X3)"; 
-	static String T_LG = "(X0, X1, X2, X3)"; //(T0, T1, [P, U])
+	static String LG = "lg(X0,X1,X2)"; 
+	static String T_LG = "(X0, X1, X2)"; //(T0, T1, [P, U])
 
 	//trigger aspects, if any
 
