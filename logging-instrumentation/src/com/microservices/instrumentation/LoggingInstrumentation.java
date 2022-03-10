@@ -114,8 +114,15 @@ public class LoggingInstrumentation {
 					"		addLoggingSpec();\n" + 
 					"		addAssertionsFromDB(localDBPath);\n" + 
 					"		addAssertionsFromDB(remoteDBPath);\n" + 
-					"		ec.query(G, T);\n" + 
-					"		writeFile(ec.getQueryResult(), logDBPath);\n" + 
+					"		\n" +
+					"		ArrayList<String> lgList = ec.lg(LG, T_LG);	\n"
+					+ "		for(String lg : lgList) {\n"
+					+ "			if(ec.test(lg)) {\n"
+					+ "				System.out.println(\"precondition is \" + ec.test(lg));\n"
+					+ "				continue;\n"
+					+ "			}\n"
+					+ "			appendFile(lg, logDBPath);\n"
+					+ "		}\n" +
 					"		ec.turnOff();\n" + 
 					"	}";
 	
@@ -260,7 +267,6 @@ public class LoggingInstrumentation {
 			hornClauseType[i] = fullHornClauseObj[i].getString("hc_type");
 			mainHornClauseObj[i] = fullHornClauseObj[i].getJSONObject("logic_clause");
 			fullHeadObj[i] = mainHornClauseObj[i].getJSONObject("head");
-			System.out.println("head type: " + fullHeadObj[i].getString("head_type"));
 			headType[i] = fullHeadObj[i].getString("head_type");
 			headLiteralObj[i] = fullHeadObj[i].getJSONObject("literal");
 			headLiteralSymbolType[i] = headLiteralObj[i].getString("symbol_type");
@@ -276,7 +282,6 @@ public class LoggingInstrumentation {
 				headLiteralArgName[i][j] = headLiteralArgObj[i][j].getJSONObject("arg").getString("arg_name");
 			}
 			bodyObj = mainHornClauseObj[i].getJSONArray("body");
-			System.out.println(mainHornClauseObj[i].getJSONArray("body"));
 			bodyLiteralObj[i] = new JSONObject [bodyObj.length()];
 			bodyLiteralSymbolType[i] = new String [bodyObj.length()];
 			bodyLiteralType[i] = new String [bodyObj.length()];
@@ -286,7 +291,7 @@ public class LoggingInstrumentation {
 			bodyLiteralArgName[i] = new String [bodyObj.length()] [];
 			for (int k = 0; k < bodyObj.length(); k++){	
 				
-				if(!bodyObj.getJSONObject(k).isNull("neg_trigger_rule")) { //TODO: parse neg_trigger_body
+				if(!bodyObj.getJSONObject(k).isNull("neg_trigger_rule")) { 
 //					System.out.println(k);
 //					System.out.println("\nfound:\"neg_trigger_rule\"");
 //					System.out.println("  - neg trig rule: "+ bodyObj.getJSONObject(k).getJSONObject("neg_trigger_rule"));
@@ -341,20 +346,18 @@ public class LoggingInstrumentation {
 		negTrigger_headLiteralArgsObj = new JSONArray();
 		negTrigger_bodyLiteralArgName = new String [logprogObj.length()] [] [];
 		
-		System.out.println("\n--negTriggerRule[i] = " + bodyObj.getJSONObject(negTriggerRulePos).getJSONObject("neg_trigger_rule"));
 		for (int i = 0; i < logprogObj.length(); i++) {
 			negTriggerRule[i] = bodyObj.getJSONObject(negTriggerRulePos).getJSONObject("neg_trigger_rule");
 			negTriggerFullHeadObj[i] = negTriggerRule[i].getJSONObject("neg_trigger_head");
 				
 			negTrigger_headType[i] = negTriggerFullHeadObj[i].getString("head_type");
-				System.out.println(" negTriggerHeadType = " + negTrigger_headType[i]);
 			negTrigger_headLiteralObj[i] = negTriggerFullHeadObj[i].getJSONObject("literal");
 			negTrigger_headLiteralSymbolType[i] = negTrigger_headLiteralObj[i].getString("symbol_type");
 			
 			negTrigger_headLiteralType[i] = negTrigger_headLiteralObj[i].getString("literal_type");
 			negTrigger_headLiteralName[i] = negTrigger_headLiteralObj[i].getString("literal_name");
 			
-			negTrigger_headLiteralArgsObj = negTrigger_headLiteralObj[i].getJSONArray("args"); //TODO check
+			negTrigger_headLiteralArgsObj = negTrigger_headLiteralObj[i].getJSONArray("args"); 
 			negTrigger_headLiteralArgObj[i] = new JSONObject [negTrigger_headLiteralArgsObj.length()];
 			negTrigger_headLiteralArgType[i] = new String [negTrigger_headLiteralArgsObj.length()];
 			negTrigger_headLiteralArgName[i] = new String[negTrigger_headLiteralArgsObj.length()];
@@ -631,7 +634,7 @@ public class LoggingInstrumentation {
 		}
 
 	}
-	//TODO
+	
 	private void addLoggingEventEngineComm() {
 		String content;
 		for (String systemPath : systemPaths) {
@@ -704,6 +707,7 @@ public class LoggingInstrumentation {
 							}
 						}
 						aspects = aspects.replace("<GET_REQS>", getReqs);
+						//TODO: add <LG>
 					}
 					content = content.replace("<ASPECTS>", aspects);
 					content = content.replace("<DEFINE_PREDS>", definePredicates());
@@ -718,7 +722,6 @@ public class LoggingInstrumentation {
 	}
 	
 
-	//TODO: fix lg: not adding "funccall" to facts
 	private String assertClauses() {
 		String assert_clauses = "";
 		String lg = "ec.addFact(\"assert((lg(";
@@ -757,7 +760,6 @@ public class LoggingInstrumentation {
 					assert_clauses += bodyLiteralName[i][k] + "(";
 					lg += bodyLiteralName[i][k] + "(";
 					for (int j = 0; j < bodyLiteralArgName[i][k].length; j++){
-						//TODO: check if the type is negative trigger (if so, skip)
 						if (bodyLiteralName[i][k].equals("funccall") && j == 2) {
 							assert_clauses += "\\\"" + bodyLiteralArgName[i][k][j] + "\\\"";
 							lg += "\\\"" + bodyLiteralArgName[i][k][j] + "\\\"";
@@ -790,19 +792,24 @@ public class LoggingInstrumentation {
 			lg += "))\");\n\t\t";
 		}
 		
-		System.out.println("- assert clauses " + assert_clauses);
 		assert_clauses += "\n" + lg + "\n";
-		System.out.println("- Lg " +lg);
 		assert_clauses += assertClausesNegTriggers();
-		System.out.println("---" + assert_clauses);
+		System.out.println("assertClauses(): \n" + assert_clauses);
 		return assert_clauses;	
 	}
 	
-	
-	
+	//TODO: create funtion to get LG
+	//TODO: change hardcoded arguments: ASK
 	private String assertClausesNegTriggers() {
-		String assert_clauses = "";
-		assert_clauses += "ec.addFact(\"assert((neg_trigger(T0, T1, [U,P]) :- "; 
+//		String assert_clauses = "ec.addFact(\"assert((neg_trigger(T0, T1, [U,P]) :- "; 
+		
+		String assert_clauses = "ec.addFact(\"assert((neg_trigger(";
+		for(int i = 0; i<bodyLiteralName[0].length; i++) {
+			if(bodyLiteralName[0][i].equals("funccall")) {
+				assert_clauses += bodyLiteralArgName[0][i][0] + ",";
+			}
+		}
+		assert_clauses += "[U,P]) :- ";
 		
 		for(int i = 0; i < negTrigger_headLiteralName.length; i++){
 			
@@ -830,12 +837,10 @@ public class LoggingInstrumentation {
 				for (int k = 0; k < negTrigger_bodyLiteralName[i].length; k++){					
 					assert_clauses += negTrigger_bodyLiteralName[i][k] + "(";
 					for (int j = 0; j < bodyLiteralArgName[i][k][0].length(); j++){
-						//TODO: check if the type is negative trigger (if so, skip)
 						if (negTrigger_bodyLiteralName[i][k].equals("funccall") && j == 2) {
 							assert_clauses += "\\\"" + negTrigger_bodyLiteralArgName[i][k][j] + "\\\"";
 						}
 						else {
-							System.out.println("ijk bodyLiteralArgName" + negTrigger_bodyLiteralArgName[i][k][j]);
 							assert_clauses += negTrigger_bodyLiteralArgName[i][k][j];
 						}
 						if (j != negTrigger_bodyLiteralArgName[i][k].length - 1) { // if not the last arg, put a comma

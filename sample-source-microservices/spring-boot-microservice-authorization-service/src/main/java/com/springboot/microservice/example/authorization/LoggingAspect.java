@@ -25,6 +25,15 @@ public class LoggingAspect {
 	@Autowired
 	private Environment env;
 	
+	@Before("execution (* com.springboot.microservice.example.authorization.AuthorizationController.getBTGUsers(..))")
+	public void before1(JoinPoint joinPoint) throws Throwable	{
+		// callEvent prefix realization		
+		logger.info("Before aspect for {}", joinPoint);
+		String precond = buildPreCond(joinPoint);
+		appendFile(precond, localDBPath);
+		logger.info(precond + " appended to local DB.");
+	}
+	
 	@Before("execution (* com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass(..))")
 	public void before0(JoinPoint joinPoint) throws Throwable	{
 		// callEvent prefix realization		

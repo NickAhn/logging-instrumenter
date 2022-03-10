@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-
 
 @Aspect
 @Configuration
@@ -41,7 +41,10 @@ public class LoggingAspect {
 	
 	static String G = "loggedfunccall(X0,X1,X2,X3)"; // goal
 	static String T = "(X0, X1, X2, X3)";	//response format
-	
+
+	static String LG = "lg(X0,X1,X2,X3)"; 
+	static String T_LG = "(X0, X1, X2, X3)"; //(T0, T1, [P, U])
+
 	//trigger aspects, if any
 
 	//logging event aspects
@@ -69,8 +72,15 @@ public class LoggingAspect {
 		addLoggingSpec();
 		addAssertionsFromDB(localDBPath);
 		addAssertionsFromDB(remoteDBPath);
-		ec.query(G, T);
-		writeFile(ec.getQueryResult(), logDBPath);
+		
+		ArrayList<String> lgList = ec.lg(LG, T_LG);	
+		for(String lg : lgList) {
+			if(ec.test(lg)) {
+				System.out.println("precondition is " + ec.test(lg));
+				continue;
+			}
+			appendFile(lg, logDBPath);
+		}
 		ec.turnOff();
 	}
 
@@ -78,12 +88,13 @@ public class LoggingAspect {
 		ec.addFact("dynamic loggedfunccall/4 as incremental"); 
 		ec.addFact("dynamic funccall/4 as incremental"); 
 		ec.addFact("dynamic funccall/4 as incremental"); 
+		ec.addFact("dynamic funccall/4 as incremental"); 
 		
-		ec.addFact("assert((loggedfunccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), ==(U, user)))");
+		ec.addFact("assert((loggedfunccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), funccall(T3, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.getBTGUsers\", []), <(T3, T0), ==(U, user)))");
 		
-ec.addFact("assert((lg(T0,T1,[U,P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), ==(U, user)))");
+ec.addFact("assert((lg(T0,T1,T3,[U,P]) :- funccall(T0, patient-service, \"com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName\", [U, P]), funccall(T1, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.breakTheGlass\", [U]), <(T1, T0), funccall(T3, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.getBTGUsers\", []), <(T3, T0), ==(U, user)))");
 		
-ec.addFact("assert((neg_trigger(T0, T1, [U,P]) :- funccall(T2, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass\", [U]), <(T2, T0), <(T1, T2)))");
+ec.addFact("assert((neg_trigger(T0,T1,T3,[U,P]) :- funccall(T2, authorization-service, \"com.springboot.microservice.example.authorization.AuthorizationController.mendTheGlass\", [U]), <(T2, T0), <(T1, T2)))");
 		
 	}
 	

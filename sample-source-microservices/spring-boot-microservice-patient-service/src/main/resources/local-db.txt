@@ -1,0 +1,2 @@
+funccall(1646941982265, patient-service, "com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName", [user, alice])
+funccall(1646942016040, patient-service, "com.springboot.microservice.example.patient.PatientController.getPatientMedHistByName", [user, alice])
