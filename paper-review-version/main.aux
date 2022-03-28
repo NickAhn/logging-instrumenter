@@ -30,7 +30,7 @@
 \newlabel{sec:pi}{{\mbox  {II-A}}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}A Class of Logging Specifications}{2}\protected@file@percent }
 \newlabel{sec:logspec}{{\mbox  {II-B}}{2}}
-\citation{github1}
+\citation{}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces ${\mathit  {Spec}_{\mathit  {log}}}$ clause structure.\relax }}{3}\protected@file@percent }
 \newlabel{fig:callpols}{{2}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example logging specification for an MRS.\relax }}{3}\protected@file@percent }
@@ -41,20 +41,17 @@
 \newlabel{fig:exm-inst}{{4}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Instrumentation Algorithm}{3}\protected@file@percent }
 \newlabel{sec:inst-alg}{{\mbox  {II-D}}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Instrumenting Microservices}{3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Instrumenting Microservices for Audit Logging}{3}\protected@file@percent }
 \newlabel{sec:impl}{{III}{3}}
-\citation{swi}
-\citation{calejo2004interprolog}
-\citation{github2}
-\citation{webb2013spring}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Instrumentation Tool: $\texttt  {LogInst}$}{4}\protected@file@percent }
-\newlabel{sec:impl-tool}{{\mbox  {III-A}}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Pseudocode of \textit  {before} advice for triggers and logging events.\relax }}{4}\protected@file@percent }
-\newlabel{fig:before-asp}{{5}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Case Study: Instrumenting $\mathtt  {MRS}_{\mathtt  {Demo}}$ with $\texttt  {LogInst}$}{4}\protected@file@percent }
-\newlabel{sec:cstudy}{{\mbox  {III-B}}{4}}
-\citation{github1}
-\citation{github1}
+\citation{}
+\citation{}
+\citation{}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}$\texttt  {LogInst}$}{4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Intermediary clause structure.\relax }}{4}\protected@file@percent }
+\newlabel{fig:intermediary}{{5}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Negative trigger clause.\relax }}{4}\protected@file@percent }
+\newlabel{fig:negtrigger}{{6}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}\texttt  {LogInst.v2}}{4}\protected@file@percent }
 \citation{microservices,guidi2017microservices,soldani2018pains,salibindla2018microservices}
 \citation{micro-oreilly,nkomo2019software,nehme2019securing}
 \citation{kuber}
@@ -71,13 +68,21 @@
 \citation{theorey_accountability}
 \citation{AURA,apple}
 \citation{bavera2015justification,ricciotti2017strongly}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Different versions of break-the-glass policy specified as a Horn clause.\relax }}{5}\protected@file@percent }
-\newlabel{fig:brk-horn}{{6}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Related Work}{5}\protected@file@percent }
-\newlabel{sec:relwork}{{IV}{5}}
 \citation{Kohlas14}
 \citation{amir-chong-skalka-post16}
 \citation{lsfa20}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Pseudocode of $\mathrm  {LoggedCall}$ inference.\relax }}{5}\protected@file@percent }
+\newlabel{fig:loggedcall}{{7}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces High-level architecture of example MRS after instrumentation by $\texttt  {LogInst}$ (and $\texttt  {LogInst.v2}$) using the specification of Figure \G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `fig:brk-horn' on page 5 undefined}.\relax }}{5}\protected@file@percent }
+\newlabel{fig:mrs-mics-target}{{8}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Instrumenting example MRS with $\texttt  {LogInst.v2}$}{5}\protected@file@percent }
+\newlabel{sec:cstudy}{{\mbox  {III-C}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Intermediary clause for the example specification in Figure \G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `' on page 5 undefined}.\relax }}{5}\protected@file@percent }
+\newlabel{fig:exm-intermediary}{{9}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Example pseudocode of $\mathrm  {LoggedCall}$ inference.\relax }}{5}\protected@file@percent }
+\newlabel{fig:exm-loggedcall}{{10}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Related Work}{5}\protected@file@percent }
+\newlabel{sec:relwork}{{IV}{5}}
 \citation{ricciotti2017core,herschel2017survey,buneman2019data}
 \citation{gordon2019precise}
 \citation{pasquier2017practical}
@@ -105,16 +110,6 @@
 \bibcite{nehme2019securing}{19}
 \bibcite{kuber}{20}
 \bibcite{nguyen2019applying}{21}
-\newlabel{fig:log-inst}{{7a}{6}}
-\newlabel{sub@fig:log-inst}{{a}{6}}
-\newlabel{fig:mrs-mics-target}{{7b}{6}}
-\newlabel{sub@fig:mrs-mics-target}{{b}{6}}
-\newlabel{fig:mrs-mics-target2}{{7c}{6}}
-\newlabel{sub@fig:mrs-mics-target2}{{c}{6}}
-\newlabel{fig:mrs-structure}{{7}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{6}\protected@file@percent }
-\newlabel{sec:conclusion}{{V}{6}}
-\@writefile{toc}{\contentsline {section}{References}{6}\protected@file@percent }
 \bibcite{baker2019novel}{22}
 \bibcite{kazanavivcius2019migrating}{23}
 \bibcite{curator}{24}
@@ -137,3 +132,6 @@
 \bibcite{gordon2019precise}{41}
 \bibcite{pasquier2017practical}{42}
 \bibcite{capobianco2017accessprov}{43}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{6}\protected@file@percent }
+\newlabel{sec:conclusion}{{V}{6}}
+\@writefile{toc}{\contentsline {section}{References}{6}\protected@file@percent }
