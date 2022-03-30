@@ -1,26 +1,26 @@
 \relax 
-\citation{cve778,owasp-top-ten}
+\citation{cwe778,owasp-top-ten}
 \citation{cwe779}
-\citation{https://www.trendmicro.com/vinfo/de/security/news/cyber-attacks/why-do-attackers-target-industrial-control-systems}
+\citation{controlsys}
 \citation{Kohlas14}
 \citation{amir-chong-skalka-law15}
 \citation{amir-chong-skalka-post16}
 \citation{amir-skalka-plas16,jcs20}
 \citation{lsfa20}
-\citation{https://www.businesswire.com/news/home/20200716005101/en/O’Reilly’s-Microservices-Adoption-in-2020-Report-Finds-that-92-of-Organizations-are-Experiencing-Success-with-Microservices}
-\citation{https://www.statista.com/statistics/1233937/microservices-adoption-level-organization/}
+\citation{Reilly}
+\citation{Statista}
 \citation{lsfa20}
 \citation{stpsa21}
-\citation{tr21}
+\citation{amirmoh-tr21}
 \providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}\protected@file@percent }
 \newlabel{sec:intro}{{I}{1}}
 \citation{matthews-gaebel-hie09}
 \citation{lsfa20}
 \citation{stpsa21}
-\citation{X}
+\citation{amirmoh-tr21}
 \citation{parrow2001introduction}
-\citation{X}
+\citation{stpsa21}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An Example MRS.\relax }}{2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:mrs-mics}{{1}{2}}
@@ -30,8 +30,10 @@
 \newlabel{sec:pi}{{\mbox  {II-A}}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}A Class of Logging Specifications}{2}\protected@file@percent }
 \newlabel{sec:logspec}{{\mbox  {II-B}}{2}}
-\citation{}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces ${\mathit  {Spec}_{\mathit  {log}}}$ clause structure.\relax }}{3}\protected@file@percent }
+\citation{github3}
+\citation{github1}
+\citation{stpsa21}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Structure of a ${\mathit  {Spec}_{\mathit  {log}}}$ logging specification.\relax }}{3}\protected@file@percent }
 \newlabel{fig:callpols}{{2}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example logging specification for an MRS.\relax }}{3}\protected@file@percent }
 \newlabel{fig:exm-logspec}{{3}{3}}
@@ -43,95 +45,48 @@
 \newlabel{sec:inst-alg}{{\mbox  {II-D}}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Instrumenting Microservices for Audit Logging}{3}\protected@file@percent }
 \newlabel{sec:impl}{{III}{3}}
-\citation{}
-\citation{}
-\citation{}
+\citation{stpsa21}
+\citation{swi}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}$\texttt  {LogInst}$}{4}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Intermediary clause structure.\relax }}{4}\protected@file@percent }
 \newlabel{fig:intermediary}{{5}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Negative trigger clause.\relax }}{4}\protected@file@percent }
-\newlabel{fig:negtrigger}{{6}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}\texttt  {LogInst.v2}}{4}\protected@file@percent }
-\citation{microservices,guidi2017microservices,soldani2018pains,salibindla2018microservices}
-\citation{micro-oreilly,nkomo2019software,nehme2019securing}
-\citation{kuber}
-\citation{nguyen2019applying,baker2019novel}
-\citation{kazanavivcius2019migrating}
-\citation{curator}
-\citation{jarwar2017exploiting}
-\citation{camilli2017formal}
-\citation{Yavuz09}
-\citation{Bock:2010:TMT:1825731.1826135,Accorsi10}
-\citation{Lee06}
-\citation{auditbased_compliance}
-\citation{logic_audit}
-\citation{theorey_accountability}
-\citation{AURA,apple}
-\citation{bavera2015justification,ricciotti2017strongly}
-\citation{Kohlas14}
-\citation{amir-chong-skalka-post16}
-\citation{lsfa20}
+\citation{stpsa21}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The clause for the $j$th negative trigger.\relax }}{5}\protected@file@percent }
+\newlabel{fig:negtrigger}{{6}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Pseudocode of $\mathrm  {LoggedCall}$ inference.\relax }}{5}\protected@file@percent }
 \newlabel{fig:loggedcall}{{7}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces High-level architecture of example MRS after instrumentation by $\texttt  {LogInst}$ (and $\texttt  {LogInst.v2}$) using the specification of Figure \G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `fig:brk-horn' on page 5 undefined}.\relax }}{5}\protected@file@percent }
-\newlabel{fig:mrs-mics-target}{{8}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Instrumenting example MRS with $\texttt  {LogInst.v2}$}{5}\protected@file@percent }
 \newlabel{sec:cstudy}{{\mbox  {III-C}}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Intermediary clause for the example specification in Figure \G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `' on page 5 undefined}.\relax }}{5}\protected@file@percent }
-\newlabel{fig:exm-intermediary}{{9}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Example pseudocode of $\mathrm  {LoggedCall}$ inference.\relax }}{5}\protected@file@percent }
-\newlabel{fig:exm-loggedcall}{{10}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Related Work}{5}\protected@file@percent }
-\newlabel{sec:relwork}{{IV}{5}}
-\citation{ricciotti2017core,herschel2017survey,buneman2019data}
-\citation{gordon2019precise}
-\citation{pasquier2017practical}
-\citation{capobianco2017accessprov}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Communication of the logging event microservice and logic engine: $\texttt  {LogInst}$ vs. $\texttt  {LogInst.v2}$.\relax }}{5}\protected@file@percent }
+\newlabel{fig:mrs-prolog-comm}{{8}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces High-level architecture of example MRS after instrumentation by $\texttt  {LogInst}$ and $\texttt  {LogInst.v2}$ using the specification of Figure 3\hbox {}.\relax }}{5}\protected@file@percent }
+\newlabel{fig:mrs-mics-target}{{9}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The intermediary and the negative trigger clauses for the example specification in Figure 3\hbox {}.\relax }}{5}\protected@file@percent }
+\newlabel{fig:exm-intermediary}{{10}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusion}{5}\protected@file@percent }
+\newlabel{sec:conclusion}{{IV}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Example pseudocode of $\mathrm  {LoggedCall}$ inference.\relax }}{5}\protected@file@percent }
+\newlabel{fig:exm-loggedcall}{{11}{5}}
 \bibstyle{IEEEtran}
 \bibdata{bib}
-\bibcite{owasp-top-ten}{1}
-\bibcite{cwe778}{2}
+\bibcite{cwe778}{1}
+\bibcite{owasp-top-ten}{2}
 \bibcite{cwe779}{3}
-\bibcite{Kohlas14}{4}
-\bibcite{amir-chong-skalka-post16}{5}
-\bibcite{lsfa20}{6}
-\bibcite{zion}{7}
-\bibcite{matthews-gaebel-hie09}{8}
-\bibcite{parrow2001introduction}{9}
-\bibcite{swi}{10}
-\bibcite{calejo2004interprolog}{11}
-\bibcite{webb2013spring}{12}
-\bibcite{microservices}{13}
-\bibcite{guidi2017microservices}{14}
-\bibcite{soldani2018pains}{15}
-\bibcite{salibindla2018microservices}{16}
-\bibcite{micro-oreilly}{17}
-\bibcite{nkomo2019software}{18}
-\bibcite{nehme2019securing}{19}
-\bibcite{kuber}{20}
-\bibcite{nguyen2019applying}{21}
-\bibcite{baker2019novel}{22}
-\bibcite{kazanavivcius2019migrating}{23}
-\bibcite{curator}{24}
-\bibcite{jarwar2017exploiting}{25}
-\bibcite{camilli2017formal}{26}
-\bibcite{Yavuz09}{27}
-\bibcite{Bock:2010:TMT:1825731.1826135}{28}
-\bibcite{Accorsi10}{29}
-\bibcite{Lee06}{30}
-\bibcite{auditbased_compliance}{31}
-\bibcite{logic_audit}{32}
-\bibcite{theorey_accountability}{33}
-\bibcite{AURA}{34}
-\bibcite{apple}{35}
-\bibcite{bavera2015justification}{36}
-\bibcite{ricciotti2017strongly}{37}
-\bibcite{ricciotti2017core}{38}
-\bibcite{herschel2017survey}{39}
-\bibcite{buneman2019data}{40}
-\bibcite{gordon2019precise}{41}
-\bibcite{pasquier2017practical}{42}
-\bibcite{capobianco2017accessprov}{43}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{6}\protected@file@percent }
-\newlabel{sec:conclusion}{{V}{6}}
+\bibcite{controlsys}{4}
+\bibcite{Kohlas14}{5}
+\bibcite{amir-chong-skalka-law15}{6}
+\bibcite{amir-chong-skalka-post16}{7}
+\bibcite{amir-skalka-plas16}{8}
+\bibcite{jcs20}{9}
+\bibcite{lsfa20}{10}
+\bibcite{Reilly}{11}
+\bibcite{Statista}{12}
+\bibcite{stpsa21}{13}
+\bibcite{amirmoh-tr21}{14}
+\bibcite{matthews-gaebel-hie09}{15}
+\bibcite{parrow2001introduction}{16}
+\bibcite{github4}{17}
+\bibcite{github1}{18}
+\bibcite{swi}{19}
 \@writefile{toc}{\contentsline {section}{References}{6}\protected@file@percent }

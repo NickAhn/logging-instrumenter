@@ -1,23 +1,23 @@
 \section{Instrumenting Microservices for Audit Logging}\label{sec:impl}
-In this section, we discuss the implementation details of the instrumentation algorithm described in Section \ref{sec:implmodel}, customized for microservices-based applications. This tool, $\tooll$, is an extension of $\tool$ described in \cite{}. Our review of $\tooll$  is followed by a demo on our medical records example. $\tooll$ (similar to $\tool$) treats each microservice as an agent of the concurrent application. Moreover, each method of a microservice plays the role of a sub-agent of the agent represented by that microservice. 
+In this section, we discuss the implementation details of the instrumentation algorithm described in Section \ref{sec:implmodel}, customized for microservices-based applications. The implemented tool, $\tooll$ \cite{github3}, is an extension of $\tool$ \cite{github1} described in \cite{stpsa21}. Our review of $\tooll$  is followed by a demo on the MRS example. $\tooll$ (similar to $\tool$) treats each microservice as an agent of the concurrent application. Moreover, each method of a microservice plays the role of a sub-agent of the agent represented by that microservice. 
 
 \subsection{$\tool$}
-In what follows we briefly describe how $\tool$ works. The reader is referred to \cite{} for more details. $\tool$ receives logging specification in JSON format along with the source code of microservices written in Java Spring framework, and applies certain modifications to those microservices such that the audit logging is supported correctly according to the formal specification. $\tool$ parses JSON specifications that lack negative triggers and are translatable to Horn clauses. In this regard, the logging event microservice is modified to launch SWI Prolog  \cite{} engine in parallel to its main process. The logging event microservice communicates the logging specifications with the engine, and queries the engine to infer whether certain events must be logged.
+In what follows we briefly describe how $\tool$ works. The reader is referred to \cite{stpsa21} for more details. $\tool$ receives logging specification in JSON format along with the source code of microservices written in Java Spring framework, and applies certain modifications to those microservices such that the audit logging is supported correctly according to the formal specification. $\tool$ parses JSON specifications that lack negative triggers and are translatable to Horn clauses. In this regard, the logging event microservice is modified to launch SWI Prolog  \cite{swi} engine in parallel to its main process. The logging event microservice communicates the logging specifications with the engine and queries the engine to infer whether certain events must be logged.
 
-$\tool$ may add one or more repositories to a microservice. There are three different types of repositories: 1) $\texttt{local-db}$ stores local trigger or logging events in a microservice, 2) $\texttt{remote-db}$ stores all trigger events associated with a logging specification, and 3) $\texttt{log-db}$ stores the log. A trigger microservice may have access to  $\texttt{local-db}$ only, whereas a logging event microservice acquires all three types of repositories. $\texttt{local-db}$ , $\texttt{remote-db}$, $\texttt{log-db}$ implement $\locprec$, $\remprec$, and $\logmap$, resp.
+$\tool$ may add one or more repositories to a microservice. There are three different types of repositories: 1) $\texttt{local-db}$ stores local trigger or logging events in a microservice, 2) $\texttt{remote-db}$ stores all trigger events associated with a logging specification, and 3) $\texttt{log-db}$ stores the audit log. A trigger microservice may have access to  $\texttt{local-db}$ only, whereas a logging event microservice acquires all three types of repositories. $\texttt{local-db}$ , $\texttt{remote-db}$, and $\texttt{log-db}$ implement $\locprec$, $\remprec$, and $\logmap$ components of the model resp.
 
-$\tool$ relies on AspectJ, in particular \emph{before} aspects,  to extend the functionalities of trigger and logging event microservices for logging purposes. Both trigger and logging event methods are preceded by storing the event of invoking that method in $\texttt{local-db}$. In addition, each logging event method queries all trigger microservices to send the content of their $\texttt{local-db}$ and aggregates them in its $\texttt{remote-db}$. Finally, the logging event microservice queries the Prolog engine for all inferred logs and adds them in its $\texttt{log-db}$ In order to query the logic engine, the logging event microservice communicates the contents of $\texttt{local-db}$ and $\texttt{remote-db}$ with the engine first. These interactive steps implement $\callev$, $\addprecond$, and $\emitev$ prefixes in $\rewrite$\footnote{Note that $\emitev$ in $\tool$ is limited to querying Prolog based on Horn clause specifications of audit logging only, where as $\emitev$ described in Section \ref{} goes beyond Horn clauses.}. 
+$\tool$ relies on AspectJ, in particular \emph{before} aspects,  to extend the functionalities of trigger and logging event microservices for audit logging purposes. Both trigger and logging event methods are preceded by storing the event of invoking that method in $\texttt{local-db}$. In addition, each logging event method queries all trigger microservices to send the content of their $\texttt{local-db}$ and accumulates them in its $\texttt{remote-db}$. Finally, the logging event microservice queries the Prolog engine for all inferred logs and adds them in its $\texttt{log-db}$. In order to query the logic engine, the logging event microservice communicates the contents of $\texttt{local-db}$ and $\texttt{remote-db}$ with the engine first. These interactive steps implement $\callev$, $\addprecond$, and $\emitev$ prefixes in $\rewrite$\footnote{Note that $\emitev$ in $\tool$ is limited to querying Prolog based on Horn clause specifications of audit logging only, where as $\emitev$ described in Section \ref{sec:implmodel} goes beyond Horn clauses.}. 
 
-As mentioned above, a logging event microservice needs to query all trigger microservices for the content of their $\texttt{local-db}$ repository. This is facilitated by $\tool$ through the addition of a REST controller in each trigger microservices that listens indefinitely on a specific URL for incoming queries from the logging event microservice. In addition, $\tool$ extends the logging event microservice with a web client to send such queries to the trigger microservices asynchronously.
+As mentioned above, a logging event microservice needs to query all trigger microservices for the content of their $\texttt{local-db}$ repository. This is facilitated by $\tool$ through the addition of a REST controller in each trigger microservice that listens indefinitely on a specific URL for incoming queries from the logging event microservice. In addition, $\tool$ extends the logging event microservice with a web client to send such queries to the trigger microservices asynchronously.
 
 
 
 \subsection{\tooll}
-$\tooll$ instruments microservices similar to $\tool$ to a great extent. In what follows, we describe the major ways in which $\tooll$ differs from $\tool$ to support more expressive logging specifications.
+Structurally, $\tooll$ instruments microservices similar to $\tool$, i.e., it adds repositories, REST controllers, web clients and API to communicate with Prolog in the same style as the earlier version. In what follows, we describe the major ways in which $\tooll$ differs from $\tool$ to support more expressive logging specifications.
 
-$\tooll$ treats negative trigger microservices similar to positive ones, i.e., each negative trigger is extended with $\texttt{local-db}$ repository, and upon transpiring a negative trigger event, that event is stored in that repository. Moreover, each negative trigger microservice is extended with a REST controller, similar to positive trigger microservices, that respond with the content of the $\texttt{local-db}$ repository. 
+$\tooll$ treats negative trigger microservices similar to positive ones, i.e., each negative trigger is extended with $\texttt{local-db}$ repository, and upon transpiring a negative trigger event, the event is stored in that repository. Moreover, each negative trigger microservice is extended with a REST controller, similar to positive trigger microservices, that responds with the content of the $\texttt{local-db}$ repository. 
 
-The main difference of $\tooll$ with the previous version is that in contrast to $\tool$, $\tooll$ cannot translate logging specifications to Horn clauses and communicate them with the Prolog engine, due to higher expressivity of the specifications. These more expressive specifications are still passed to the instrumenting tool in JSON. $\tooll$ parses the JSON specification which specifies logical rules of the form given in Figure \ref{fig:callpols}. $\tooll$ instruments the logging event microservices to initially redacts the negative triggers and builds intermediary Horn clauses of the form depicted in Figure \ref{fig:intermediary}. These clauses are communicated with the Prolog engine. 
+$\tooll$ differs from $\tool$ mainly in dealing with logging specifications. In contrast to $\tool$, $\tooll$ cannot translate logging specifications to Horn clauses and communicate them with the Prolog engine, due to higher expressivity of the specifications. These more expressive specifications are still passed to the instrumenting tool in JSON. $\tooll$ parses the JSON specification which specifies logical rules of the form given in Figure \ref{fig:callpols}. $\tooll$ instruments the logging event microservices to initially redact the negative triggers and build intermediary Horn clauses of the form depicted in Figure \ref{fig:intermediary}. These clauses are communicated with the Prolog engine. 
 
 
 \begin{figure}
@@ -33,10 +33,12 @@ The main difference of $\tooll$ with the previous version is that in contrast to
 \label{fig:intermediary}
 \end{figure}
 
-Logging event microservice is instrumented in the same style as $\tool$ to add local event to $\texttt{local-db}$, and reach out to (negative and positive) trigger microservices to store trigger events in its $\texttt{remote-db}$. However, the next few steps differ from the one supported by $\tool$.
+Logging event microservice is instrumented in the same style as $\tool$ to add local events to $\texttt{local-db}$, and reach out to (negative and positive) trigger microservices to store trigger events in its $\texttt{remote-db}$. However, the next few steps differ from the one supported by $\tool$.
 
-In order to decide whether an event must be logged by a logging event microservice, the service sends query of the form $\folp{LG}(A_0, B_0, t_0, \cdots, t_n,\mathit{xs_0}, \cdots, \mathit{xs_n})$ to the Prolog engine. The result is temporarily stored in a container. Let's call this data strucuture $\texttt{lg-list}$. %Next, the microservice goes through the content of its $\texttt{remote-db}$ and extracts the list of all negative trigger events. Let's call this data structure $\mathttt{neg-trigger-list}$. For each negative trigger event in $\mathttt{neg-trigger-list}$
-Next, the microservice checks whether $\folp{LoggedCall(A_0, B_0, \mathit{xs}_0)}$ is derivable by studying the preconditions of every negative trigger. In this regard, for each negative trigger microservice and method pair $(A'_j, B'_j)$ (of Figure \ref{fig:callpols}) it adds the clause given in Figure \ref{fig:negtrigger} to the Prolog engine. The logging event microservice goes through each candidate in $\texttt{lg-list}$ and checks whether $\folp{NegativeTrigger}$s are derivable. The algorithm in Figure \ref{fig:loggedcall} describes logging event's behavior to infer whether $\folp{LoggedCall(A_0, B_0, \mathit{xs}_0)}$ is derivable. Note that $\tooll$ does not hard code any of the negative trigger preconditions in the instrumented logging event microservice. These preconditions are read  from JSON specification, translated to Horn clauses of the form given in Figure \ref{fig:negtrigger}, and communicated with the Prolog engine.
+In order to decide whether an event must be logged by a logging event microservice, the service sends query of the form $\folp{LG}(A_0, B_0, t_0, \cdots, t_n,\mathit{xs_0}, \cdots, \mathit{xs_n})$ to the Prolog engine. $A_0$ and $B_0$ are the only constant arguments of this query. The resolution of the query is sent by the Prolog engine and is temporarily stored in a container by the logging event microservice. Let's call this data strucuture $\texttt{lg-list}$. %Next, the microservice goes through the content of its $\texttt{remote-db}$ and extracts the list of all negative trigger events. Let's call this data structure $\mathttt{neg-trigger-list}$. For each negative trigger event in $\mathttt{neg-trigger-list}$
+Next, the microservice checks whether $\folp{LoggedCall}(A_0, B_0, \mathit{xs}_0)$ is derivable by studying the preconditions of every negative trigger. In this regard, for each negative trigger microservice and method pair $(A'_j, B'_j)$ (of Figure \ref{fig:callpols}) it adds the clause given in Figure \ref{fig:negtrigger} to the Prolog engine, i.e., $\tooll$ adds $m$ clause of the form given in Figure \ref{fig:negtrigger} to the engine. 
+
+The logging event microservice goes through each candidate in $\texttt{lg-list}$ and checks whether $\folp{NegativeTrigger}$ predicates are derivable. The algorithm in Figure \ref{fig:loggedcall} describes logging event's behavior to infer whether $\folp{LoggedCall}(A_0, B_0, \mathit{xs}_0)$ is derivable. Note that $\tooll$ does not hard code any of the negative trigger preconditions in the instrumented logging event microservice. These preconditions are read  from JSON specification, translated to Horn clauses of the form given in Figure \ref{fig:negtrigger}, and communicated with the Prolog engine.
 
 \begin{figure}
 \setlength{\fboxsep}{0pt}%%%%%%%%
@@ -46,7 +48,7 @@ Next, the microservice checks whether $\folp{LoggedCall(A_0, B_0, \mathit{xs}_0)
 \implies \folp{NegativeTrigger}(j, t_0, \cdots, t_n,\mathit{xs_0}, \cdots, \mathit{xs_n}) 
 \end{mathpar}
 }}
-\caption{Negative trigger clause.} 
+\caption{The clause for the $j$th negative trigger.} 
 \label{fig:negtrigger}
 \end{figure}
 
@@ -71,21 +73,28 @@ for each candidate LG(A0, B0, t0, ..., tn, xs0, ..., xsn) in lg-list:
 \end{figure}
 
 
+Figure \ref{fig:mrs-prolog-comm} summarizes the communication differences between the logging event microservice and the Prolog engine.
 
+\begin{figure} 
+	\centering
+	\fbox{\includegraphics[width=0.45\textwidth]{./figs/log-inst-comm3.eps}}
+	\caption{Communication of the logging event microservice and logic engine: $\tool$ vs. $\tooll$.}
+	\label{fig:mrs-prolog-comm}
+\end{figure}
 
 
 %\subsection{A Demo of Microservices-based Medical Records Systems} \label{sec:impl-demo}
 \subsection{Instrumenting example MRS with $\tooll$} \label{sec:cstudy}
-Section \ref{sec:intro} discusses an oversimplified MRS consisting of several microservices. In this section, we describe how $\tooll$ instruments this system according to the logging specification given in Figure \ref{}. Structurally $\tooll$ modifies the microservices by adding $\texttt{local-db}$ repository to the Authorization microservice (trigger), and all three types of repositories to the Patient microservice (logging event). In addition, Patient service runs Prolog engine and communicates with it different logical rules and facts. Authorization microservice is extended with a REST controller that responds to the Patient-side web client HTTP Get requests about its $\texttt{local-db}$ content. These architectural changes are depicted in Figure \ref{fig:mrs-mics-target}. The reader is referred to \cite{} for details on how these changes are applied. We mainly focus on the aspects that differentiates the rewritten application from $\tool$'s output in this section. 
+Section \ref{sec:intro} discusses an oversimplified MRS consisting of several microservices. In this section, we describe how $\tooll$ instruments this system according to the logging specification given in Figure \ref{fig:exm-logspec}. Structurally $\tooll$ modifies the microservices by adding $\texttt{local-db}$ repository to the Authorization microservice (trigger), and all three types of repositories to the Patient microservice (logging event). In addition, Patient service runs Prolog engine and communicates different logical rules and facts with it. Authorization microservice is extended with a REST controller that responds to the Patient-side web client HTTP GET requests about its $\texttt{local-db}$ content. These architectural changes are depicted in Figure \ref{fig:mrs-mics-target}. The reader is referred to \cite{stpsa21} for more details on these structural modifications. In the following, we focus on the aspects that differ from $\tool$'s output. 
 
 \begin{figure} 
 	\centering
 	\fbox{\includegraphics[width=0.45\textwidth]{./figs/mrs-mics-target.eps}}
-	\caption{High-level architecture of example MRS after instrumentation by $\tool$ (and $\tooll$) using the specification of Figure \ref{fig:brk-horn}.}
+	\caption{High-level architecture of example MRS after instrumentation by $\tool$ and $\tooll$ using the specification of Figure \ref{fig:exm-logspec}.}
 	\label{fig:mrs-mics-target}
 \end{figure}
 
-$\tooll$ modifies Patient service to create intermediary clause given in Figure \ref{fig:exm-intermediary} and communicates it with Prolog engine. Note that in this rule, methods' full package/class path is redacted for brevity. Moreover, since there is a single negative trigger in this example, a single negative trigger clause is created by the Patient service that can be used to ensure whether the preconditions are met for that negative trigger. This rule is also communicated with the Prolog engine.
+$\tooll$ modifies Patient service to create an intermediary clause and communicates it with Prolog engine. Note that in the presentation of this rule, each method's full package/class path is redacted for brevity. Moreover, since there is a single negative trigger ($\texttt{mendTheGlass}$) a single negative trigger clause is created by the Patient service that can be used to ensure whether the preconditions are met for that negative trigger. This rule is also communicated with the Prolog engine.  Figure \ref{fig:exm-intermediary} demonstrates the intermediary and negative trigger clauses.
 
 \begin{figure}
 \begin{tiny}
@@ -97,26 +106,28 @@ lg(patient-service, getPatientMedHistory, T0,T1,[U,P]) :-
   <(T1, T0),
   ==(U, user).
 
-/* Negative Trigger Clause */ 
-negative_trigger(T0,T1,[U,P]) :-
+/* Single Negative Trigger Clause */ 
+negative_trigger(1,T0,T1,[U,P]) :-
   funccall(T2, authorization-service, mendTheGlass, [U]),
   <(T2, T0),
   <(T1, T2).
 \end{Verbatim}
 \end{tiny}
-\caption{Intermediary clause for the example specification in Figure \ref{}.}
+\caption{The intermediary and the negative trigger clauses for the example specification in Figure \ref{fig:exm-logspec}.}
 \label{fig:exm-intermediary}
 \end{figure}
 
-Upon deciding to log an event, Patient service queries Prolog for all instances of $\texttt{lg(patient-service, getPatientMedHistory,T0,T1,[U,P])}$ and stores the result in $\texttt{lg-list}$. Then, Patient service follows the pseudocode in Figure \ref{fig:exm-loggedcall} to infer whether logging events must be logged.
+Upon deciding to log an event, Patient service queries Prolog for all instances of \texttt{lg(patient-service, getPatientMedHistory, T0, T1, [U,P])} and stores the results in $\texttt{lg-list}$. Then, Patient service follows the pseudocode in Figure \ref{fig:exm-loggedcall} to infer whether logging events must be logged. Note that Figure \ref{fig:exm-loggedcall} depicts a specialization of the general process described in  \ref{fig:loggedcall}.
 
 \begin{figure}
 \begin{tiny}
 \begin{Verbatim}[frame=single]
-for each candidate lg(patient-service, getPatientMedHistory,T0,T1,[U,P])} in lg-list:
-  if negative_trigger(T0,T1,[U,P]) is derivable:
+for each candidate lg(patient-service, getPatientMedHistory,T0,T1,[U,P])} 
+          in lg-list:
+  if negative_trigger(1,T0,T1,[U,P]) is derivable:
     LoggedCall is not derivable. Continue with the next candidate. 
-  LoggedCall is derivable. Add LoggedCall(patient-service, getPatientMedHistory,[U,P]) to log-db.
+  LoggedCall is derivable. Add LoggedCall(patient-service, 
+                                          getPatientMedHistory,[U,P]) to log-db.
 \end{Verbatim}
 \end{tiny}
 \caption{Example pseudocode of $\folp{LoggedCall}$ inference.}

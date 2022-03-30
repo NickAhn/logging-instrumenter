@@ -8,61 +8,49 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: bib.bib
-I was expecting a `,' or a `}'---line 1112 of file bib.bib
- : 
- : @incollection{parrow2001introduction,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Repeated entry---line 1175 of file bib.bib
- : @article{webb2013spring
- :                        ,
-I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--empty year in baker2019novel
-Warning--missing institution in gordon2019precise
 
 Done.
-You've used 43 entries,
+You've used 19 entries,
             4024 wiz_defined-function locations,
-            1048 strings with 13655 characters,
-and the built_in function-call counts, 31346 in all, are:
-= -- 2452
-> -- 716
-< -- 251
-+ -- 397
-- -- 118
-* -- 1440
-:= -- 4556
-add.period$ -- 98
-call.type$ -- 43
-change.case$ -- 49
-chr.to.int$ -- 621
-cite$ -- 45
-duplicate$ -- 2284
-empty$ -- 2755
-format.name$ -- 150
-if$ -- 7305
+            913 strings with 10244 characters,
+and the built_in function-call counts, 10391 in all, are:
+= -- 835
+> -- 165
+< -- 59
++ -- 95
+- -- 25
+* -- 447
+:= -- 1617
+add.period$ -- 40
+call.type$ -- 19
+change.case$ -- 26
+chr.to.int$ -- 144
+cite$ -- 19
+duplicate$ -- 820
+empty$ -- 964
+format.name$ -- 35
+if$ -- 2369
 int.to.chr$ -- 0
-int.to.str$ -- 43
-missing$ -- 398
-newline$ -- 152
-num.names$ -- 38
-pop$ -- 1007
+int.to.str$ -- 19
+missing$ -- 152
+newline$ -- 80
+num.names$ -- 12
+pop$ -- 396
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2460
+skip$ -- 833
 stack$ -- 0
-substring$ -- 1503
-swap$ -- 1769
-text.length$ -- 44
+substring$ -- 369
+swap$ -- 573
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 43
-warning$ -- 2
-while$ -- 145
-width$ -- 45
-write$ -- 409
-(There were 2 error messages)
+type$ -- 19
+warning$ -- 0
+while$ -- 34
+width$ -- 21
+write$ -- 185

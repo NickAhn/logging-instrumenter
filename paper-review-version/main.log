@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  27 MAR 2022 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  29 MAR 2022 18:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -427,32 +427,8 @@ Package caption Info: End \AtBeginDocument code.
 \c@notation=\count283
 \c@definition=\count284
 ) (./frontmatter.tex) (./intro.tex
-
-LaTeX Warning: Citation `cve778' on page 1 undefined on input line 4.
-
-
-LaTeX Warning: Citation `https://www.trendmicro.com/vinfo/de/security/news/cybe
-r-attacks/why-do-attackers-target-industrial-control-systems' on page 1 undefin
-ed on input line 4.
-
-
-LaTeX Warning: Citation `amir-chong-skalka-law15' on page 1 undefined on input 
-line 7.
-
-
-LaTeX Warning: Citation `amir-skalka-plas16' on page 1 undefined on input line 
-7.
-
-
-LaTeX Warning: Citation `jcs20' on page 1 undefined on input line 7.
-
-
-LaTeX Warning: Citation `https://www.businesswire.com/news/home/20200716005101/
-en/O’Reilly’s-Microservices-Adoption-in-2020-Report-Finds-that-92-of-Organi
-zations-are-Experiencing-Success-with-Microservices' on page 1 undefined on inp
-ut line 10.
-
 LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -462,24 +438,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Citation `https://www.statista.com/statistics/1233937/microservi
-ces-adoption-level-organization/' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `stpsa21' on page 1 undefined on input line 13.
-
-
-LaTeX Warning: Citation `tr21' on page 1 undefined on input line 15.
-
-[1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+) [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-
-LaTeX Warning: Citation `stpsa21' on page 2 undefined on input line 21.
-
 Package epstopdf Info: Source file: <./figs/mrs-mics2.eps>
 (epstopdf)                    date: 2020-06-04 18:25:28
 (epstopdf)                    size: 26705 bytes
@@ -501,14 +463,10 @@ File: ./figs/mrs-mics2-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./figs/mrs-mics2-eps-converted-to.pdf  used on input l
 ine 25.
 (pdftex.def)             Requested size: 232.19843pt x 103.43793pt.
-) (./implmodel-condense.tex
 
-LaTeX Warning: Citation `X' on page 2 undefined on input line 3.
+LaTeX Warning: Reference `sec:relwork' on page 2 undefined on input line 42.
 
-
-LaTeX Warning: Citation `X' on page 2 undefined on input line 12.
-
-[2 <./figs/mrs-mics2-eps-converted-to.pdf>]
+) (./implmodel-condense.tex [2 <./figs/mrs-mics2-eps-converted-to.pdf>]
 Overfull \hbox (2.55002pt too wide) in paragraph at lines 26--27
 [][] 
  []
@@ -516,17 +474,6 @@ Overfull \hbox (2.55002pt too wide) in paragraph at lines 26--27
 
 Overfull \hbox (2.55002pt too wide) in paragraph at lines 47--48
 [][] 
- []
-
-
-Underfull \hbox (badness 2894) in paragraph at lines 67--68
-[]\OT1/ptm/m/n/10 As an ex-am-ple, hav-ing the def-i-ni-tions in Fig-ure 3[]
- []
-
-
-Underfull \hbox (badness 2922) in paragraph at lines 67--68
-\OT1/ptm/m/n/10 for an MRS, $\OMS/cmsy/m/n/10 I$ \OT1/ptm/m/n/10 mod-i-fies the
- def-i-ni-tion of sub-agents
  []
 
 
@@ -540,21 +487,15 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
  (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
+
+LaTeX Warning: Citation `github3' on page 3 undefined on input line 2.
+
 [3]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 4.
 
-
-LaTeX Warning: Reference `' on page 4 undefined on input line 9.
-
-
 Underfull \hbox (badness 1953) in paragraph at lines 11--12
 []$ \OT1/ptm/m/n/10 repos-i-tory. This is fa-cil-i-tated by $[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
-[]$[]$ \OT1/ptm/m/n/10 in-stru-ments mi-croser-vices sim-i-lar to
  []
 
 
@@ -562,25 +503,38 @@ Overfull \hbox (2.55002pt too wide) in paragraph at lines 31--32
 [][] 
  []
 
-
-Overfull \hbox (2.55002pt too wide) in paragraph at lines 48--49
+[4]
+Overfull \hbox (2.55002pt too wide) in paragraph at lines 50--51
 [][] 
  []
 
+Package epstopdf Info: Source file: <./figs/log-inst-comm3.eps>
+(epstopdf)                    date: 2022-03-29 17:57:31
+(epstopdf)                    size: 38397 bytes
+(epstopdf)             Output file: <./figs/log-inst-comm3-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2022-03-29 18:13:31
+(epstopdf)                    size: 14833 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figs/log-inst-comm3-eps-
+converted-to.pdf ./figs/log-inst-comm3.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+<./figs/log-inst-comm3-eps-converted-to.pdf, id=48, 337.26pt x 301.125pt>
+File: ./figs/log-inst-comm3-eps-converted-to.pdf Graphic file (type pdf)
+<use ./figs/log-inst-comm3-eps-converted-to.pdf>
+Package pdftex.def Info: ./figs/log-inst-comm3-eps-converted-to.pdf  used on in
+put line 80.
+(pdftex.def)             Requested size: 232.19843pt x 207.32158pt.
 
-LaTeX Warning: Reference `' on page 4 undefined on input line 79.
-
-
-Underfull \hbox (badness 4205) in paragraph at lines 79--80
+Underfull \hbox (badness 4205) in paragraph at lines 88--89
 []\OT1/ptm/m/n/10 Section I[] dis-cusses an over-sim-pli-fied MRS con-sist-
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 79--80
+Underfull \hbox (badness 3396) in paragraph at lines 88--89
 \OT1/ptm/m/n/10 ing of sev-eral mi-croser-vices. In this sec-tion, we de-
  []
 
-[4]
 Package epstopdf Info: Source file: <./figs/mrs-mics-target.eps>
 (epstopdf)                    date: 2020-06-08 17:59:49
 (epstopdf)                    size: 39196 bytes
@@ -590,54 +544,96 @@ f>
 (epstopdf)                    size: 15902 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/mrs-mics-target-eps
 -converted-to.pdf ./figs/mrs-mics-target.eps>
-(epstopdf)             \includegraphics on input line 83.
+(epstopdf)             \includegraphics on input line 92.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/mrs-mics-target-eps-c
 onverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <
 1.5> allowed
-<./figs/mrs-mics-target-eps-converted-to.pdf, id=48, 322.20375pt x 251.94125pt>
+<./figs/mrs-mics-target-eps-converted-to.pdf, id=49, 322.20375pt x 251.94125pt>
 
 File: ./figs/mrs-mics-target-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/mrs-mics-target-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/mrs-mics-target-eps-converted-to.pdf  used on i
-nput line 83.
+nput line 92.
 (pdftex.def)             Requested size: 232.19843pt x 181.57054pt.
 
-LaTeX Warning: Reference `fig:brk-horn' on page 5 undefined on input line 84.
-
-
-LaTeX Warning: Reference `fig:brk-horn' on page 5 undefined on input line 84.
-
-
-LaTeX Warning: Reference `' on page 5 undefined on input line 107.
-
-
-LaTeX Warning: Reference `' on page 5 undefined on input line 107.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-[]\OT1/ptm/m/n/10 Upon de-cid-ing to log an event, Pa-tient
+Underfull \hbox (badness 4752) in paragraph at lines 120--121
+\OT1/ptm/m/n/10 Pro-log for all in-stances of \OT1/pcr/m/n/10 lg(patient-servic
+e,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-\OT1/ptm/m/n/10 ser-vice queries Pro-log for all in-stances of
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+\OT1/pcr/m/n/10 getPatientMedHistory, T0, T1, [U,P]) \OT1/ptm/m/n/10 and
  []
 
-
-Overfull \hbox (66.0pt too wide) in paragraph at lines 111--112
-[]$
- []
-
-) (./relwork.tex [5 <./figs/mrs-mics-target-eps-converted-to.pdf>])
-(./conclusion.tex) (./main.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 25--27
+) (./conclusion.tex [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs
+-mics-target-eps-converted-to.pdf>]) (./main.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 29--31
 []\OT1/ptm/m/n/8 ``Top 10-2017 A10-Insufficient Log-ging & Mon-i-tor-ing,''
  []
 
-[6])
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--40
+[]\OT1/ptm/m/n/8 ``Why Do At-tack-ers Tar-get In-dus-trial Con-trol Sys-tems?''
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--40
+\OT1/ptm/m/n/8 https://www.trendmicro.com/vinfo/de/security/news/cyber-attacks/
+why-
+ []
+
+
+Underfull \hbox (badness 3646) in paragraph at lines 68--72
+[]\OT1/ptm/m/n/8 ``O'Reilly's Mi-croser-vices Adop-tion in 2020 Re-port Finds t
+hat
+ []
+
+
+Underfull \hbox (badness 6961) in paragraph at lines 68--72
+\OT1/ptm/m/n/8 92Or-ga-ni-za-tions are Ex-pe-ri-enc-ing Suc-cess with Mi-croser
+-vices,''
+ []
+
+
+Overfull \hbox (8.99768pt too wide) in paragraph at lines 68--72
+\OT1/ptm/m/n/8 https://www.businesswire.com/news/home/20200716005101/en/O'Reill
+y's-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--72
+\OT1/ptm/m/n/8 Microservices-Adoption-in-2020-Report-Finds-that-92-of-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--72
+\OT1/ptm/m/n/8 Organizations-are-Experiencing-Success-with-Microservices, 2020,
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--77
+\OT1/ptm/m/n/8 https://www.statista.com/statistics/1233937/microservices-adopti
+on-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--103
+[]\OT1/ptm/m/n/8 N. D. Ahn and S. Amir-Mohammadian, ``Lo-gInst.v2:
+ []
+
+
+Underfull \hbox (badness 4205) in paragraph at lines 100--103
+\OT1/ptm/m/n/8 In-stru-ment-ing Mi-croser-vices of Java Web Apps for Au-dit-ing
+,''
+ []
+
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -649,7 +645,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7
+[6
 
 ] (./main.aux)
 
@@ -657,44 +653,45 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6964 strings out of 480608
- 107059 string characters out of 5903631
- 362850 words of memory out of 5000000
- 22719 multiletter control sequences out of 15000+600000
- 585841 words of font info for 139 fonts, out of 8000000 for 9000
+ 6930 strings out of 480608
+ 106321 string characters out of 5903631
+ 362755 words of memory out of 5000000
+ 22687 multiletter control sequences out of 15000+600000
+ 584734 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,96p,1930b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,11n,96p,2021b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/loca
 l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
 /texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/20
-20/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2020/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2020/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2020/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2020/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/texmf-dist/font
-s/type1/public/amsfonts/symbols/msam5.pfb></usr/local/texlive/2020/texmf-dist/f
-onts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/typ
-e1/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/
-times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb
-i8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
-usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (7 pages, 330134 bytes).
+ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
+/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2020/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2020/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2020/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msam5.pfb></usr/local/texlive/2020/texmf-dist/fon
+ts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1
+/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/ti
+mes/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8
+a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
+r/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (6 pages, 340576 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 160 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
