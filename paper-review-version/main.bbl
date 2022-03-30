@@ -43,17 +43,14 @@ J.~Kohlas and J.~Schmid, ``An algebraic theory of information: {A}n
   introduction and survey,'' \emph{Information}, vol.~5, no.~2, pp. 219--254,
   2014.
 
-\bibitem{amir-chong-skalka-law15}
-S.~Amir{-}Mohammadian, S.~Chong, and C.~Skalka, ``Foundations for auditing
-  assurance,'' in \emph{{Layered Assurance Workshop}}, 2015.
-
-\bibitem{amir-chong-skalka-post16}
-------, ``Correct audit logging: Theory and practice,'' in \emph{{POST}}, 2016,
-  pp. 139--162.
+\bibitem{post16}
+S.~Amir-Mohammadian, S.~Chong, and C.~Skalka, ``Correct audit logging: Theory
+  and practice,'' in \emph{International Conference on Principles of Security
+  and Trust ({POST})}, April 2016.
 
 \bibitem{amir-skalka-plas16}
 S.~Amir-Mohammadian and C.~Skalka, ``In-depth enforcement of dynamic integrity
-  taint analysis,'' in \emph{{POST}}, 2016.
+  taint analysis,'' in \emph{{PLAS}}, 2016.
 
 \bibitem{jcs20}
 C.~Skalka, S.~Amir{-}Mohammadian, and S.~Clark, ``Maybe tainted data: {T}heory
@@ -97,8 +94,8 @@ J.~Parrow, ``An introduction to the $\pi$-calculus,'' in \emph{Handbook of
   479--543.
 
 \bibitem{github4}
-N.~D. Ahn and S.~Amir-Mohammadian, ``{LogInst.v2: Instrumenting Microservices
-  of Java Web Apps for Auditing},''
+N.~D. Ahn and S.~Amir-Mohammadian, ``{LogInst.v2: Instrumenting Java
+  Microservices for Audit Logging: Beyond Horn Clauses},''
   \url{https://github.com/NickAhn/logging-instrumenter}, 2022.
 
 \bibitem{github1}

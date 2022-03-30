@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  29 MAR 2022 18:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  29 MAR 2022 19:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -487,9 +487,6 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
  (/usr/local/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-
-LaTeX Warning: Citation `github3' on page 3 undefined on input line 2.
-
 [3]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 4.
@@ -588,49 +585,38 @@ why-
  []
 
 
-Underfull \hbox (badness 3646) in paragraph at lines 68--72
+Underfull \hbox (badness 3646) in paragraph at lines 65--69
 []\OT1/ptm/m/n/8 ``O'Reilly's Mi-croser-vices Adop-tion in 2020 Re-port Finds t
 hat
  []
 
 
-Underfull \hbox (badness 6961) in paragraph at lines 68--72
+Underfull \hbox (badness 6961) in paragraph at lines 65--69
 \OT1/ptm/m/n/8 92Or-ga-ni-za-tions are Ex-pe-ri-enc-ing Suc-cess with Mi-croser
 -vices,''
  []
 
 
-Overfull \hbox (8.99768pt too wide) in paragraph at lines 68--72
+Overfull \hbox (8.99768pt too wide) in paragraph at lines 65--69
 \OT1/ptm/m/n/8 https://www.businesswire.com/news/home/20200716005101/en/O'Reill
 y's-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--72
+Underfull \hbox (badness 10000) in paragraph at lines 65--69
 \OT1/ptm/m/n/8 Microservices-Adoption-in-2020-Report-Finds-that-92-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--72
+Underfull \hbox (badness 10000) in paragraph at lines 65--69
 \OT1/ptm/m/n/8 Organizations-are-Experiencing-Success-with-Microservices, 2020,
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--77
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
 \OT1/ptm/m/n/8 https://www.statista.com/statistics/1233937/microservices-adopti
 on-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--103
-[]\OT1/ptm/m/n/8 N. D. Ahn and S. Amir-Mohammadian, ``Lo-gInst.v2:
- []
-
-
-Underfull \hbox (badness 4205) in paragraph at lines 100--103
-\OT1/ptm/m/n/8 In-stru-ment-ing Mi-croser-vices of Java Web Apps for Au-dit-ing
-,''
  []
 
 )
@@ -653,10 +639,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6930 strings out of 480608
- 106321 string characters out of 5903631
- 362755 words of memory out of 5000000
- 22687 multiletter control sequences out of 15000+600000
+ 6928 strings out of 480608
+ 106269 string characters out of 5903631
+ 362751 words of memory out of 5000000
+ 22685 multiletter control sequences out of 15000+600000
  584734 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,11n,96p,2021b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -688,7 +674,7 @@ ts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1
 mes/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8
 a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
 r/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 340576 bytes).
+Output written on main.pdf (6 pages, 340449 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams
