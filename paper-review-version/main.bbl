@@ -35,8 +35,7 @@
 
 \bibitem{controlsys}
 ``{Why Do Attackers Target Industrial Control Systems?}''
-  \url{https://www.trendmicro.com/vinfo/de/security/news/cyber-attacks/why-do-attackers-target-industrial-control-systems},
-  2017, accessed: 2022-03-29.
+  \url{https://rb.gy/ketznl}, 2017, accessed: 2022-03-29.
 
 \bibitem{Kohlas14}
 J.~Kohlas and J.~Schmid, ``An algebraic theory of information: {A}n
@@ -64,13 +63,11 @@ S.~Amir-Mohammadian and C.~Kari, ``Correct audit logging in concurrent
 \bibitem{Reilly}
 ``{O’Reilly’s Microservices Adoption in 2020 Report Finds that 92% of
   Organizations are Experiencing Success with Microservices},''
-  \url{https://www.businesswire.com/news/home/20200716005101/en/O’Reilly’s-Microservices-Adoption-in-2020-Report-Finds-that-92-of-Organizations-are-Experiencing-Success-with-Microservices},
-  2020, accessed: 2022-03-29.
+  \url{https://rb.gy/frajim}, 2020, accessed: 2022-03-29.
 
 \bibitem{Statista}
 ``{Organizations' adoption level of microservices worldwide in 2021},''
-  \url{https://www.statista.com/statistics/1233937/microservices-adoption-level-organization/},
-  2022, accessed: 2022-03-29.
+  \url{https://rb.gy/kanclv}, 2022, accessed: 2022-03-29.
 
 \bibitem{stpsa21}
 S.~Amir{-}Mohammadian and A.~Y. Zowj, ``Towards concurrent audit logging in
@@ -96,7 +93,7 @@ J.~Parrow, ``An introduction to the $\pi$-calculus,'' in \emph{Handbook of
 \bibitem{github4}
 N.~D. Ahn and S.~Amir-Mohammadian, ``{LogInst.v2: Instrumenting Java
   Microservices for Audit Logging: Beyond Horn Clauses},''
-  \url{https://github.com/NickAhn/logging-instrumenter}, 2022.
+  \url{https://rb.gy/vbxtpq}, 2022.
 
 \bibitem{github1}
 S.~Amir-Mohammadian and A.~Y. Zowj, ``{LogInst: Instrumenting Microservices of
