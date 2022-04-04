@@ -100,6 +100,62 @@ S.~Amir-Mohammadian and A.~Y. Zowj, ``{LogInst: Instrumenting Microservices of
   Java Web Apps for Auditing},'' \url{https://rb.gy/h5gihs}, 2020.
 
 \bibitem{swi}
-``{SWI Prolog},'' \url{https://www.swi-prolog.org/}, accessed: 2021-04-15.
+``{SWI Prolog},'' \url{https://www.swi-prolog.org/}, accessed: 2022-04-03.
+
+\bibitem{mateus2021security}
+N.~Mateus-Coelho, M.~Cruz-Cunha, and L.~G. Ferreira, ``Security in
+  microservices architectures,'' \emph{Procedia Computer Science}, vol. 181,
+  pp. 1225--1236, 2021.
+
+\bibitem{nkomo2019software}
+P.~Nkomo and M.~Coetzee, ``Software development activities for secure
+  microservices,'' in \emph{{ICCSA}}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Springer, 2019, pp. 573--585.
+
+\bibitem{nehme2019securing}
+A.~Nehme, V.~Jesus, K.~Mahbub, and A.~Abdallah, ``Securing microservices,''
+  \emph{IT Professional}, vol.~21, no.~1, pp. 42--49, 2019.
+
+\bibitem{yu2019survey}
+D.~Yu, Y.~Jin, Y.~Zhang, and X.~Zheng, ``A survey on security issues in
+  services communication of microservices-enabled fog applications,''
+  \emph{Concurrency and Computation: Practice and Experience}, vol.~31, no.~22,
+  p. e4436, 2019.
+
+\bibitem{barabanov2021security}
+A.~Barabanov and D.~Makrushin, ``Security audit logging in microservice-based
+  systems: survey of architecture patterns,'' \emph{arXiv preprint
+  arXiv:2102.09435}, 2021.
+
+\bibitem{kazanavivcius2019migrating}
+J.~Kazanavi{\v{c}}ius and D.~Ma{\v{z}}eika, ``Migrating legacy software to
+  microservices architecture,'' in \emph{{eStream}}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2019, pp. 1--5.
+
+\bibitem{khazaei2017elascale}
+H.~Khazaei, R.~Ravichandiran, B.~Park, H.~Bannazadeh, A.~Tizghadam, and
+  A.~Leon-Garcia, ``Elascale: autoscaling and monitoring as a service,''
+  \emph{arXiv preprint arXiv:1711.03204}, 2017.
+
+\bibitem{cloudwatch}
+``{Amazon CloudWatch},'' \url{https://rb.gy/da5tsp}, 2022, accessed:
+  2022-04-04.
+
+\bibitem{nagios}
+``{Nagios},'' \url{https://www.nagios.org}, 2022, accessed: 2022-04-04.
+
+\bibitem{kuber}
+M.~Wasson, ``{Monitoring a microservices architecture in Azure Kubernetes
+  Service (AKS)},'' \url{https://rb.gy/xzlm95}, 2020, accessed: 2022-04-04.
+
+\bibitem{nguyen2019applying}
+Q.~Nguyen and O.~Baker, ``Applying spring security framework and oauth2 to
+  protect microservice architecture api,'' \emph{Journal of Software}, pp.
+  257--264, 2019.
+
+\bibitem{cinque2019microservices}
+M.~Cinque, R.~Della~Corte, and A.~Pecchia, ``Microservices monitoring with
+  event logs and black box execution tracing,'' \emph{IEEE Transactions on
+  Services Computing}, 2019.
 
 \end{thebibliography}

@@ -1,4 +1,14 @@
-\section{Conclusion} \label{sec:conclusion}
+\section{Related Work and Conclusion} \label{sec:rwc}
+
+\subsection{Related Work} \label{sec:relwork}
+
+As microservices have gained more popularity in the application design and deployment in recent years, their safety and security have been the focus of several studies, e.g., \cite{mateus2021security, nkomo2019software, nehme2019securing, yu2019survey}. Most commonly in the realm of audit logging, a central approach has been considered, where a specific microservice is responsible to collect all logging events \cite{barabanov2021security, kazanavivcius2019migrating}. In particular, Elascale \cite{khazaei2017elascale} is a monitoring system that is deployed as an independent microservice. In contrast, Amir-Mohammadian et al. \cite{stpsa21} propose an instrumentation technique that enables concurrent audit logging in different microservices. $\tool$ \cite{github1} is the implementation of this instrumentation technique in the context of Java Spring microservices. Formal correctness of $\tool$ relies on information algebraic \cite{Kohlas14} semantics of audit logging, originally explored in \cite{lsfa20}  for concurrent systems. 
+
+Operating system-level and network-level monitoring  has been a commonplace trend in audit logging for microservices. Examples include Amazon CloudeWatch \cite{cloudwatch}, Nagios \cite{nagios}, Microsoft Azure Kubernetes \cite{kuber}, and Spring Security Framework \cite{nguyen2019applying}. Cinque et al. \cite{cinque2019microservices} propose a blackbox tracing mechanism for monitoring microservices that does not involve instrumentation. 
+
+In this paper, we propose a more powerful tool to support concurrent audit logging in microservices, called $\tooll$. Our tool enables microservices to log events conditionally based on trigger events that must transpire as well as trigger events that must not take place. In this regard, an instrumentation algorithm is studied and proven correct \cite{amirmoh-tr21}, on which $\tooll$ relies for formal guarantees. 
+
+\subsection{Conclusion} \label{sec:conclusion}
 In this paper, we have proposed an instrumentation tool for Java Spring based microservices to enforce audit requirements, whose logical specifications are not expressible by Horn clause logic. Our implementation tool is an extension of an earlier solution that supported specifications in Horn clauses. Our tool receives the specification in JSON format, along with the source code of microservices. It identifies the triggers and logging events in the application, and accordingly instruments them. As a case study, we discuss a microservices-based medical records system that lets users to deactivate controlling access to patient medical information in critical scenarios and activate it at a later stage. The correctness of the instrumentation tool relies on a formal model of the instrumentation that guarantees the generated logs to be necessary and sufficient.
 
 

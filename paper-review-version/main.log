@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  29 MAR 2022 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 APR 2022 09:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -463,9 +463,6 @@ File: ./figs/mrs-mics2-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./figs/mrs-mics2-eps-converted-to.pdf  used on input l
 ine 25.
 (pdftex.def)             Requested size: 232.19843pt x 103.43793pt.
-
-LaTeX Warning: Reference `sec:relwork' on page 2 undefined on input line 42.
-
 ) (./implmodel-condense.tex [2 <./figs/mrs-mics2-eps-converted-to.pdf>]
 Overfull \hbox (2.55002pt too wide) in paragraph at lines 26--27
 [][] 
@@ -567,7 +564,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--121
  []
 
 ) (./conclusion.tex [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs
--mics-target-eps-converted-to.pdf>]) (./main.bbl
+-mics-target-eps-converted-to.pdf>]
+Underfull \hbox (badness 1881) in paragraph at lines 9--10
+[]\OT1/ptm/m/n/10 In this pa-per, we pro-pose a more pow-er-ful tool to
+ []
+
+) (./main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 29--31
 []\OT1/ptm/m/n/8 ``Top 10-2017 A10-Insufficient Log-ging & Mon-i-tor-ing,''
  []
@@ -590,6 +592,12 @@ Underfull \hbox (badness 6961) in paragraph at lines 64--67
 -vices,''
  []
 
+
+Underfull \hbox (badness 5302) in paragraph at lines 126--129
+[]\OT1/ptm/m/n/8 A. Bara-banov and D. Makrushin, ``Se-cu-rity au-dit log-ging i
+n
+ []
+
 )
 
 ** Conference Paper **
@@ -602,50 +610,45 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6
-
-] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[6] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 6928 strings out of 480608
- 106269 string characters out of 5903631
- 362751 words of memory out of 5000000
- 22685 multiletter control sequences out of 15000+600000
- 584734 words of font info for 138 fonts, out of 8000000 for 9000
+ 6940 strings out of 480608
+ 106488 string characters out of 5903631
+ 363827 words of memory out of 5000000
+ 22698 multiletter control sequences out of 15000+600000
+ 583627 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,11n,96p,2021b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/loca
-l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
-/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/t
-exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/tex
-live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
-/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
-020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2020
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2020/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2020/texmf
--dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2020/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2020/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type
-1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msam5.pfb></usr/local/texlive/2020/texmf-dist/fon
-ts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1
-/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/ti
-mes/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmbi8
-a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></us
-r/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 340246 bytes).
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.e
+nc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex
+7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
+fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></u
+sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/lo
+cal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
+/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/te
+xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texli
+ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
+2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
+20/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/202
+0/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2020/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2020/texmf
+-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2020/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msam5.pfb></usr/local/texlive/202
+0/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-
+dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
+urw/times/utmbi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times
+/utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.p
+fb>
+Output written on main.pdf (6 pages, 344282 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams

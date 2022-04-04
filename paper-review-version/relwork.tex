@@ -1,26 +1,31 @@
 \section{Related Work} \label{sec:relwork}
 
-%\paragraph{Audit logging in microservices}
-\textbf{\textit{Audit logging in microservices.}}
-In recent years, constructing software in terms of decoupled microservices \cite{microservices, guidi2017microservices, soldani2018pains, salibindla2018microservices} has been a trending approach in web application design and deployment, and thus different studies have been conducted on microservices security \cite{micro-oreilly, nkomo2019software, nehme2019securing}. In practice, enforcing in-depth security has pushed platform-specific monitoring and logging techniques for microservices, e.g., in Azure Kubernetes Service \cite{kuber} and Spring Security Framework \cite{nguyen2019applying, baker2019novel}. One common approach has been to establish a central logging service with data visualization capabilities \cite{kazanavivcius2019migrating}. Examples include a  provenance logger for microservices-based applications \cite{curator}, and an architecture for IoT services that includes logger microservices in Web of Objects platform \cite{jarwar2017exploiting}.  Our approach in audit logging is concurrent rather than central, i.e., any microservice is able to log events based on preconditions that may occur in other microservices as well as that microservice. This boosts the expressivity of the enforcible logging policies. %2) We have a language-based approach to study audit logging with formal correctness guarantees, and then deploy it according to this language-based model. %Jolie \cite{jolie} is the dedicated programming language for microservices-based development of applications, whose semantics is heavily inspired by $\pi$-calculus \cite{guidi2006sock,montesi2011programming}. This has inspired us to study the correctness of audit logs for concurrent systems in this calculus rather than other language models. 
-There have been other approaches to define semantics of microservices, including Petri nets \cite{camilli2017formal}.
+As microservices have gained more popularity in the application design and deployment in recent years, their safety and security have been the focus of several studies, e.g., \cite{mateus2021security, nkomo2019software, nehme2019securing, yu2019survey}. Most commonly in the realm of audit logging, a central approach has been considered, where a specific microservice is responsible to collect all logging events \cite{barabanov2021security, kazanavivcius2019migrating}. In contrast, Amir-Mohammadian et al. \cite{stpsa21} propose an instrumentation technique that enables concurrent audit logging in different microservices. 
+
+In this paper, we propose a more powerful tool to support concurrent audit logging in microservices. The formal correctness of the proposed tool relies on information algebraic \cite{Kohlas14} semantics of audit logging, originally explored in \cite{lsfa20}  in the context of concurrent systems. To support negative triggers, the instrumentation algorithm is revised and proven correct \cite{amirmoh-tr21}. 
 
 
-%\paragraph{Formal study of audit logging}
-\textit{\textbf{Formal study of audit logging.}} 
-One line of work wrt formal study of audit logging focuses on the security of logs, in particular through cryptographic techniques, e.g., to establish forward secrecy \cite{Yavuz09}, to ensure trustworthiness of logs \cite{Bock:2010:TMT:1825731.1826135, Accorsi10}, and to preserve privacy in auditing \cite{Lee06}. These techniques assume that logs are given in the first place to be secured. However, in this paper we aim at developing a tool to generate audit logs according to a provably correct model, and thus security of the logged data is orthogonal to it. 
-
-Another line of work uses logical frameworks to establish accountability in access to system resources. Examples include a framework to enforce accountability goals in discretionary access control \cite{auditbased_compliance}, accountability wrt access to personal information based on owner-defined usage policies \cite{logic_audit}, distributed accountability based on turn-based games \cite{theorey_accountability}, and logging the proof of having access to system resources \cite{AURA, apple}. %Our logical framework for audit logging, however, does not limit it to a certain application, and can be used to instrument systems for different logging purposes.  
-Another related area of work is the language-level analysis of generated audit logs \cite{bavera2015justification,ricciotti2017strongly%,ricciotti2018explicit
-}. 
-
-%\paragraph{Correct audit logging} 
-\textit{\textbf{Correct audit logging.}}
-Information algebra \cite{Kohlas14} has been used to describe the semantics of audit logging \cite{amir-chong-skalka-post16} for linear process execution that defines notion of correctness for audit logs, along with an instrumentation model that guarantees to generate correct audit logs. %The same semantic framework has been used to enhance dynamic integrity information flow analysis through post-facto study of audit logs \cite{amir-skalka-plas16,jcs20} in a provable fashion. 
-Lately, an instrumentation model has been proposed for concurrent systems based on the information-algebraic semantic framework \cite{lsfa20}. This model enjoys correct audit logging, which has been the basis for our proposed instrumentation tool. %\cite{github1} 
-
-
-
-%\paragraph{Provenance} 
-\textit{\textbf{Provenance.}}
-Audit logging is closely associated with the notion of provenance tracking \cite{ricciotti2017core, herschel2017survey, buneman2019data}. Recent works in this area include ClearScope \cite{gordon2019precise} a provenance tracker for Android devices, CamFlow \cite{pasquier2017practical} an auditing and provenance capture utility in Linux, and AccessProv \cite{capobianco2017accessprov} an instrumentation tool to discover vulnerabilities in Java applications.
+%%\paragraph{Audit logging in microservices}
+%\textbf{\textit{Audit logging in microservices.}}
+%In recent years, constructing software in terms of decoupled microservices \cite{microservices, guidi2017microservices, soldani2018pains, salibindla2018microservices} has been a trending approach in web application design and deployment, and thus different studies have been conducted on microservices security \cite{micro-oreilly, nkomo2019software, nehme2019securing}. In practice, enforcing in-depth security has pushed platform-specific monitoring and logging techniques for microservices, e.g., in Azure Kubernetes Service \cite{kuber} and Spring Security Framework \cite{nguyen2019applying, baker2019novel}. One common approach has been to establish a central logging service with data visualization capabilities \cite{kazanavivcius2019migrating}. Examples include a  provenance logger for microservices-based applications \cite{curator}, and an architecture for IoT services that includes logger microservices in Web of Objects platform \cite{jarwar2017exploiting}.  Our approach in audit logging is concurrent rather than central, i.e., any microservice is able to log events based on preconditions that may occur in other microservices as well as that microservice. This boosts the expressivity of the enforcible logging policies. %2) We have a language-based approach to study audit logging with formal correctness guarantees, and then deploy it according to this language-based model. %Jolie \cite{jolie} is the dedicated programming language for microservices-based development of applications, whose semantics is heavily inspired by $\pi$-calculus \cite{guidi2006sock,montesi2011programming}. This has inspired us to study the correctness of audit logs for concurrent systems in this calculus rather than other language models. 
+%There have been other approaches to define semantics of microservices, including Petri nets \cite{camilli2017formal}.
+%
+%
+%%\paragraph{Formal study of audit logging}
+%\textit{\textbf{Formal study of audit logging.}} 
+%One line of work wrt formal study of audit logging focuses on the security of logs, in particular through cryptographic techniques, e.g., to establish forward secrecy \cite{Yavuz09}, to ensure trustworthiness of logs \cite{Bock:2010:TMT:1825731.1826135, Accorsi10}, and to preserve privacy in auditing \cite{Lee06}. These techniques assume that logs are given in the first place to be secured. However, in this paper we aim at developing a tool to generate audit logs according to a provably correct model, and thus security of the logged data is orthogonal to it. 
+%
+%Another line of work uses logical frameworks to establish accountability in access to system resources. Examples include a framework to enforce accountability goals in discretionary access control \cite{auditbased_compliance}, accountability wrt access to personal information based on owner-defined usage policies \cite{logic_audit}, distributed accountability based on turn-based games \cite{theorey_accountability}, and logging the proof of having access to system resources \cite{AURA, apple}. %Our logical framework for audit logging, however, does not limit it to a certain application, and can be used to instrument systems for different logging purposes.  
+%Another related area of work is the language-level analysis of generated audit logs \cite{bavera2015justification,ricciotti2017strongly%,ricciotti2018explicit
+%}. 
+%
+%%\paragraph{Correct audit logging} 
+%\textit{\textbf{Correct audit logging.}}
+%Information algebra \cite{Kohlas14} has been used to describe the semantics of audit logging \cite{amir-chong-skalka-post16} for linear process execution that defines notion of correctness for audit logs, along with an instrumentation model that guarantees to generate correct audit logs. %The same semantic framework has been used to enhance dynamic integrity information flow analysis through post-facto study of audit logs \cite{amir-skalka-plas16,jcs20} in a provable fashion. 
+%Lately, an instrumentation model has been proposed for concurrent systems based on the information-algebraic semantic framework \cite{lsfa20}. This model enjoys correct audit logging, which has been the basis for our proposed instrumentation tool. %\cite{github1} 
+%
+%
+%
+%%\paragraph{Provenance} 
+%\textit{\textbf{Provenance.}}
+%Audit logging is closely associated with the notion of provenance tracking \cite{ricciotti2017core, herschel2017survey, buneman2019data}. Recent works in this area include ClearScope \cite{gordon2019precise} a provenance tracker for Android devices, CamFlow \cite{pasquier2017practical} an auditing and provenance capture utility in Linux, and AccessProv \cite{capobianco2017accessprov} an instrumentation tool to discover vulnerabilities in Java applications.
