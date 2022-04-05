@@ -23,15 +23,15 @@
 
 \bibitem{cwe778}
 ``{CWE-778: Insufficient Logging},'' \url{https://rb.gy/2hhb5o}, 2021,
-  accessed: 2021-04-07.
+  accessed: 2022-04-04.
 
 \bibitem{owasp-top-ten}
 ``{Top 10-2017 A10-Insufficient Logging \& Monitoring},''
-  \url{https://rb.gy/mj1xpf}, 2017, accessed: 2021-03-05.
+  \url{https://rb.gy/mj1xpf}, 2017, accessed: 2022-04-04.
 
 \bibitem{cwe779}
 ``{CWE-779: Logging of Excessive Data},'' \url{https://rb.gy/myvjgc}, 2021,
-  accessed: 2021-04-07.
+  accessed: 2022-04-04.
 
 \bibitem{controlsys}
 ``{Why Do Attackers Target Industrial Control Systems?}''
@@ -61,7 +61,7 @@ S.~Amir-Mohammadian and C.~Kari, ``Correct audit logging in concurrent
   systems,'' \emph{ENTCS}, vol. 351, pp. 115--141, September 2020.
 
 \bibitem{Reilly}
-``{O’Reilly’s Microservices Adoption in 2020 Report Finds that 92% of
+``{O’Reilly’s Microservices Adoption in 2020 Report Finds that $92\%$ of
   Organizations are Experiencing Success with Microservices},''
   \url{https://rb.gy/frajim}, 2020, accessed: 2022-03-29.
 
@@ -71,10 +71,9 @@ S.~Amir-Mohammadian and C.~Kari, ``Correct audit logging in concurrent
 
 \bibitem{stpsa21}
 S.~Amir{-}Mohammadian and A.~Y. Zowj, ``Towards concurrent audit logging in
-  microservices,'' in \emph{Proceedings of the 15th IEEE International Workshop
-  on Security, Trust and Privacy for Software Applications (STPSA 2021), as
-  part of the 45th Annual IEEE Computers, Software, and Applications Conference
-  (COMPSAC 2021)}, July 2021, pp. 1357--1362.
+  microservices,'' in \emph{Proceedings of the 45th Annual IEEE Computers,
+  Software, and Applications Conference (COMPSAC 2021)}, July 2021, pp.
+  1357--1362.
 
 \bibitem{amirmoh-tr21}
 S.~Amir-Mohammadian, ``Correct audit logging in concurrent systems with
