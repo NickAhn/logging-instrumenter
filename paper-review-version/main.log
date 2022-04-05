@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 APR 2022 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 APR 2022 18:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -573,16 +573,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--121
 \OT1/pcr/m/n/10 getPatientMedHistory, T0, T1, [U,P]) \OT1/ptm/m/n/10 and
  []
 
-) (./conclusion.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs-mics-target-eps-co
-nverted-to.pdf>]
-Underfull \hbox (badness 1881) in paragraph at lines 11--12
+) (./relwork.tex [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs-mi
+cs-target-eps-converted-to.pdf>]
+Underfull \hbox (badness 1881) in paragraph at lines 7--8
 []\OT1/ptm/m/n/10 In this pa-per, we pro-pose a more pow-er-ful tool to
  []
 
-) (./main.bbl
+) (./conclusion.tex) (./main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 29--31
 []\OT1/ptm/m/n/8 ``Top 10-2017 A10-Insufficient Log-ging & Mon-i-tor-ing,''
  []
@@ -619,9 +616,9 @@ Before submitting the final camera ready copy, remember to:
 
 [6] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 6940 strings out of 480608
- 106488 string characters out of 5903631
- 363827 words of memory out of 5000000
+ 6942 strings out of 480608
+ 106503 string characters out of 5903631
+ 362807 words of memory out of 5000000
  22698 multiletter control sequences out of 15000+600000
  583627 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -656,7 +653,7 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts
 /times/utmbi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on main.pdf (6 pages, 352626 bytes).
+Output written on main.pdf (6 pages, 352451 bytes).
 PDF statistics:
  164 PDF objects out of 1000 (max. 8388607)
  114 compressed objects within 2 object streams
