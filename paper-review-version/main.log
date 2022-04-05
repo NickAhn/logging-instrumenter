@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 APR 2022 09:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  4 APR 2022 17:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -502,6 +502,11 @@ Overfull \hbox (2.55002pt too wide) in paragraph at lines 50--51
 [][] 
  []
 
+
+Underfull \hbox (badness 2080) in paragraph at lines 76--77
+\OT1/ptm/m/n/10 tween the in-stru-mented log-ging event mi-croser-vice and
+ []
+
 Package epstopdf Info: Source file: <./figs/log-inst-comm3.eps>
 (epstopdf)                    date: 2022-03-29 17:57:31
 (epstopdf)                    size: 38397 bytes
@@ -553,6 +558,11 @@ Package pdftex.def Info: ./figs/mrs-mics-target-eps-converted-to.pdf  used on i
 nput line 92.
 (pdftex.def)             Requested size: 232.19843pt x 181.57054pt.
 
+Underfull \hbox (badness 1910) in paragraph at lines 97--98
+\OT1/ptm/m/n/10 ter-me-di-ary clause and com-mu-ni-cate it with Pro-log en-
+ []
+
+
 Underfull \hbox (badness 4752) in paragraph at lines 120--121
 \OT1/ptm/m/n/10 Pro-log for all in-stances of \OT1/pcr/m/n/10 lg(patient-servic
 e,
@@ -563,9 +573,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--121
 \OT1/pcr/m/n/10 getPatientMedHistory, T0, T1, [U,P]) \OT1/ptm/m/n/10 and
  []
 
-) (./conclusion.tex [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs
--mics-target-eps-converted-to.pdf>]
-Underfull \hbox (badness 1881) in paragraph at lines 9--10
+) (./conclusion.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs-mics-target-eps-co
+nverted-to.pdf>]
+Underfull \hbox (badness 1881) in paragraph at lines 11--12
 []\OT1/ptm/m/n/10 In this pa-per, we pro-pose a more pow-er-ful tool to
  []
 
@@ -648,7 +661,7 @@ nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/
 urw/times/utmbi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (6 pages, 344282 bytes).
+Output written on main.pdf (6 pages, 344943 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams
