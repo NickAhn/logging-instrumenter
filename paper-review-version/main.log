@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  5 APR 2022 16:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  7 APR 2022 13:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,11 +558,6 @@ Package pdftex.def Info: ./figs/mrs-mics-target-eps-converted-to.pdf  used on i
 nput line 92.
 (pdftex.def)             Requested size: 232.19843pt x 181.57054pt.
 
-Underfull \hbox (badness 1910) in paragraph at lines 97--98
-\OT1/ptm/m/n/10 ter-me-di-ary clause and com-mu-ni-cate it with Pro-log en-
- []
-
-
 Underfull \hbox (badness 4752) in paragraph at lines 120--121
 \OT1/ptm/m/n/10 Pro-log for all in-stances of \OT1/pcr/m/n/10 lg(patient-servic
 e,
@@ -573,16 +568,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--121
 \OT1/pcr/m/n/10 getPatientMedHistory, T0, T1, [U,P]) \OT1/ptm/m/n/10 and
  []
 
-) (./relwork.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs-mics-target-eps-co
-nverted-to.pdf>]
-Underfull \hbox (badness 1881) in paragraph at lines 7--8
-[]\OT1/ptm/m/n/10 In this pa-per, we pro-pose a more pow-er-ful tool to
+Underfull \hbox (badness 1418) in paragraph at lines 120--121
+\OT1/ptm/m/n/10 stores the re-sults in $[]$. Then, $[]$ ser-vice
  []
 
-) (./conclusion.tex) (./main.bbl
+
+Underfull \hbox (badness 1902) in paragraph at lines 120--121
+\OT1/ptm/m/n/10 fol-lows the pseu-docode in Fig-ure 11[] to in-fer whether
+ []
+
+) (./relwork.tex
+Underfull \vbox (badness 1655) has occurred while \output is active []
+
+ [5 <./figs/log-inst-comm3-eps-converted-to.pdf> <./figs/mrs-mics-target-eps-co
+nverted-to.pdf>]) (./conclusion.tex) (./main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 29--31
 []\OT1/ptm/m/n/8 ``Top 10-2017 A10-Insufficient Log-ging & Mon-i-tor-ing,''
  []
@@ -621,7 +621,7 @@ Before submitting the final camera ready copy, remember to:
 Here is how much of TeX's memory you used:
  6942 strings out of 480608
  106503 string characters out of 5903631
- 363807 words of memory out of 5000000
+ 362807 words of memory out of 5000000
  22698 multiletter control sequences out of 15000+600000
  583627 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -656,7 +656,7 @@ t/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2020/texmf-dist/fonts
 /times/utmbi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on main.pdf (6 pages, 352321 bytes).
+Output written on main.pdf (6 pages, 352562 bytes).
 PDF statistics:
  164 PDF objects out of 1000 (max. 8388607)
  114 compressed objects within 2 object streams

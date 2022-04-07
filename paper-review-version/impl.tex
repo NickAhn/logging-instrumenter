@@ -85,7 +85,7 @@ Figure \ref{fig:mrs-prolog-comm} summarizes the communication differences betwee
 
 %\subsection{A Demo of Microservices-based Medical Records Systems} \label{sec:impl-demo}
 \subsection{Instrumenting example MRS with $\tooll$} \label{sec:cstudy}
-Section \ref{sec:intro} discusses an oversimplified MRS consisting of several microservices. In this section, we describe how $\tooll$ instruments this system according to the logging specification given in Figure \ref{fig:exm-logspec}. Structurally $\tooll$ modifies the microservices by adding $\texttt{local-db}$ repository to the Authorization microservice (trigger), and all three types of repositories to the Patient microservice (logging event). In addition, Patient service runs Prolog engine in this own thread and communicates different logical rules and facts with it. Authorization microservice is extended with a REST controller that responds to the Patient-side web client HTTP GET requests about its $\texttt{local-db}$ content. These architectural changes are depicted in Figure \ref{fig:mrs-mics-target}. The reader is referred to \cite{stpsa21} for more details on these structural modifications. In the following, we focus on the aspects that differ from $\tool$'s output. 
+Section \ref{sec:intro} discusses an oversimplified MRS consisting of several microservices. In this section, we describe how $\tooll$ instruments this system according to the logging specification given in Figure \ref{fig:exm-logspec}. Structurally $\tooll$ modifies the microservices by adding $\texttt{local-db}$ repository to the $\mathtt{Authorization}$ microservice (trigger), and all three types of repositories to the $\mathtt{Patient}$ microservice (logging event). In addition, $\mathtt{Patient}$ service runs Prolog engine in this own thread and communicates different logical rules and facts with it. $\mathtt{Authorization}$ microservice is extended with a REST controller that responds to the $\mathtt{Patient}$-side web client HTTP GET requests about its $\texttt{local-db}$ content. These architectural changes are depicted in Figure \ref{fig:mrs-mics-target}. The reader is referred to \cite{stpsa21} for more details on these structural modifications. In the following, we focus on the aspects that differ from $\tool$'s output. 
 
 \begin{figure} 
 	\centering
@@ -94,7 +94,7 @@ Section \ref{sec:intro} discusses an oversimplified MRS consisting of several mi
 	\label{fig:mrs-mics-target}
 \end{figure}
 
-$\tooll$ modifies Patient service to create an intermediary clause and communicate it with Prolog engine. Moreover, since there is a single negative trigger ($\texttt{mendTheGlass}$) a single negative trigger clause is created by the Patient service that can be used to ensure whether the preconditions are met for that negative trigger. This rule is also communicated with the Prolog engine.  Figure \ref{fig:exm-intermediary} demonstrates the intermediary and negative trigger clauses. Note that in the presentation of these rules, each method's full package/class path is redacted for brevity. 
+$\tooll$ modifies $\mathtt{Patient}$ service to create an intermediary clause and communicate it with Prolog engine. Moreover, since there is a single negative trigger ($\texttt{mendTheGlass}$) a single negative trigger clause is created by the $\mathtt{Patient}$ service that can be used to ensure whether the preconditions are met for that negative trigger. This rule is also communicated with the Prolog engine.  Figure \ref{fig:exm-intermediary} demonstrates the intermediary and negative trigger clauses. Note that in the presentation of these rules, each method's full package/class path is redacted for brevity. 
 
 \begin{figure}
 \begin{tiny}
@@ -117,7 +117,7 @@ negative_trigger(1,T0,T1,[U,P]) :-
 \label{fig:exm-intermediary}
 \end{figure}
 
-Upon deciding to log an event, Patient service queries Prolog for all instances of \texttt{lg(patient-service, getPatientMedHistory, T0, T1, [U,P])} and stores the results in $\texttt{lg-list}$. Then, Patient service follows the pseudocode in Figure \ref{fig:exm-loggedcall} to infer whether logging events must be logged. Note that Figure \ref{fig:exm-loggedcall} depicts a specialization of the general process described in  \ref{fig:loggedcall}.
+Upon deciding to log an event, $\mathtt{Patient}$ service queries Prolog for all instances of \texttt{lg(patient-service, getPatientMedHistory, T0, T1, [U,P])} and stores the results in $\texttt{lg-list}$. Then, $\mathtt{Patient}$ service follows the pseudocode in Figure \ref{fig:exm-loggedcall} to infer whether logging events must be logged. Note that Figure \ref{fig:exm-loggedcall} depicts a specialization of the general process described in  Figure \ref{fig:loggedcall}.
 
 \begin{figure}
 \begin{tiny}
