@@ -8,3 +8,9 @@ This repo consists of the following details:
 2. A sample web application: a medical records system
 
 3. Four versions of instrumented sample web application according to four logging specifications. The login specifications are defined using JSON.
+
+## LogInst.v2
+*LogInst.v2* instruments microservices similar to LogInst. The main difference between the lays in dealing with the logging specifications.
+The specifications given to *LogInst.v2* have higher expressivity that goes beyond horn clauses, so unlike LogInst, *LogInst.v2* cannot directly translate the logging specifications to horn clauses and communicate them with the Prolog engine. The more expressive logging specifications are still passed into *LogInst.v2* in JSON, and the instrumenter parses it into logical rules and distinguish negative from positive triggers.
+
+LogInst.v2 have an algorithm in the before Aspect of the logging event that initially redacts the negative triggers and build intermediary Horn Clauses as "candidates" to be logged and adds them to a list *lg-list*. Then, the logging event microservice goes through each candidate in *lg-list* and communicates with Prolog to check whether *NegativeTrigger* predicates (negative trigger logical rule derived when parsing the JSON file) holds. If a *NegativeTrigger* predicate holds, the candidate should not be logged. Otherwise, log the event call.
